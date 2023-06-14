@@ -1,5 +1,6 @@
 <?php
 
+use Faker\Guesser\Name;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -16,6 +17,26 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('welcome');
+});
+Route::get('/index', function () {
+    return view('layouts.index');
+})->name('index');
+Route::get('/about', function () {
+    return view('layouts.about');
+})->name('about');
+Route::get('/contact', function () {
+    return view('layouts.contact');
+})->name('contact');
+Route::get('/shop-single', function () {
+    return view('layouts.shop-single');
+})->name('shop-single');
+Route::get('/shop', function () {
+    return view('layouts.shop');
+})->name('shop');
+
+
+Route::get('/', function () {
+    return view('layouts.index');
 });
 
 Auth::routes();
