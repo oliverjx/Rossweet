@@ -81,4 +81,12 @@ class ClientController extends Controller
     {
         //
     }
+    public function disble($id)
+    {
+        //
+    }
+    public function enable($id)
+    {
+        //
+    }
 }
