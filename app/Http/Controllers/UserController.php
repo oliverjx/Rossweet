@@ -88,5 +88,5 @@ class UserController extends Controller
     public function enable($id)
     {
         //
-    }
+    } 
 }
