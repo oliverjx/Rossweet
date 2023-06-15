@@ -69,9 +69,9 @@
     <section class="container py-5">
         <div class="row text-center pt-3">
             <div class="col-lg-6 m-auto">
-                <h1 class="h1">Categorías del mes</h1>
+                <h1 class="h1">Categorías</h1>
                 <p>
-                    En nuestra categoría del mes, te presentamos una selección especial de los mejores postres y panaderías. Descubre una amplia variedad de deliciosos postres, desde exquisitos bizcochos y tartas hasta tentadores panes y croissants. Explora una gama de sabores y texturas en esta categoría destacada que te sorprenderá cada mes. ¡Déjate cautivar por los aromas irresistibles y los sabores inolvidables de nuestras destacadas opciones de postres y panaderías!
+                    En nuestra categorías, te presentamos una selección especial de los mejores postres y panaderías. Descubre una amplia variedad de deliciosos postres, desde exquisitos bizcochos y tartas hasta tentadores panes y croissants. Explora una gama de sabores y texturas en esta categoría destacada que te sorprenderá cada mes. ¡Déjate cautivar por los aromas irresistibles y los sabores inolvidables de nuestras destacadas opciones de postres y panaderías!
                 </p>
             </div>
         </div>
