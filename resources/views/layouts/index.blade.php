@@ -1,4 +1,4 @@
-@extends(layouts.main)
+@extends('layouts.main')
 @section('relleno')
         <div class="carousel-inner">
             <div class="carousel-item active">
