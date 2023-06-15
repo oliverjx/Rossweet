@@ -20,7 +20,9 @@ return new class extends Migration
             $table->string('description')->default('no description');
             $table->string('time_lapse')->nullable();
             $table->boolean('disponible')->default(true);
+            $table->boolean('oferta')->default(false);
             $table->integer('stock')->default(0)->nullable();
+            $table->enum('Quantity',['individual','','combo','other']);
             $table->unsignedBigInteger('category_id')->nullable();
             $table->foreign('category_id')->references('id')->on('categories')->onDelete(null);
             $table->unsignedBigInteger('type_id')->nullable();
