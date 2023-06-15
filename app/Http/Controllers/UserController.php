@@ -2,91 +2,109 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
+use App\Models\User;
 
 class UserController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+
     public function index()
     {
-        //
+        $users = User::all();
+        return view('users.index', ['users' => $users]);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+
     public function create()
     {
-        //
+        return view('users.create');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
+
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'name' => 'required|unique:users|min:2',
+            'rol' => 'required|in:user,employee,admin',
+            'email' => 'required|unique:users',
+            'password' => 'required|min:6',
+            'state' => 'nullable|boolean',
+        ]);
+
+        $user = new User;
+        $user->name = $request->input('name');
+        $user->rol = $request->input('rol');
+        $user->email = $request->input('email');
+        $user->password = bcrypt($request->input('password'));
+        $user->state = $request->input('state', true);
+        $user->save();
+
+        return redirect()->route('users.index')->with('success', 'A new user has been created');
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
+
+    public function show(string $id)
     {
-        //
+        $user = User::find($id);
+
+        return view('users.show', ['user' => $user]);
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
+
+    public function edit(string $id)
     {
-        //
+        $user = User::find($id);
+        return view('users.edit', ['user' => $user]);
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
+
+    public function update(Request $request, string $id)
     {
-        //
+        $user = User::find($id);
+        $request->validate([
+            'name' => 'required|unique:users,name,' . $id . '|min:2',
+            'rol' => 'required|in:user,employee,admin',
+            'email' => 'required|unique:users,email,' . $id,
+            'password' => 'nullable|min:6',
+            'state' => 'nullable|boolean',
+        ]);
+
+        $user->name = $request->input('name');
+        $user->rol = $request->input('rol');
+        $user->email = $request->input('email');
+        if ($request->has('password')) {
+            $user->password = bcrypt($request->input('password'));
+        }
+        $user->state = $request->input('state', true);
+        $user->save();
+
+        return redirect()->route('users.index')->with('success', 'User updated successfully');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
+
+    public function destroy(string $id)
     {
-        //
+        $user = User::find($id);
+        $user->delete();
+
+        return redirect()->route('users.index')->with('success', 'A user has been removed');
     }
-    public function disble($id)
+    public function disable(string $id)
     {
-        //
+        $user = User::find($id);
+        $user->state = false;
+        $user->save();
+
+        return redirect()->route('users.index')->with('success', 'User disabled successfully');
     }
-    public function enable($id)
+
+    public function enable(string $id)
     {
-        //
-    } 
+        $user = User::find($id);
+        $user->state = true;
+        $user->save();
+
+        return redirect()->route('users.index')->with('success', 'User enabled successfully');
+    }
 }
