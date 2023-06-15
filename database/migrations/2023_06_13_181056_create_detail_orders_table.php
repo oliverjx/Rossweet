@@ -22,7 +22,7 @@ return new class extends Migration
             $table->foreign('product_id')->references('id')->on('products');
             $table->float('price');
             $table->float('quantity');
-            $table->float('Subtotal')->nullable()->defaultTo(DB::raw('price * quantity'));
+            $table->float('Subtotal')->nullable();
             $table->timestamps();
         });
     }
