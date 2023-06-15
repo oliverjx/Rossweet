@@ -19,6 +19,7 @@ use Illuminate\Support\Facades\Route;
 
 // LAYOOUT ROUTES
 
+Route::get('/form',        function () {    return view('layouts.form');})->name('form');
 Route::get('/index',        function () {    return view('layouts.index');})->name('index');
 Route::get('/about',        function () {    return view('layouts.about');})->name('about');
 Route::get('/contact',      function () {    return view('layouts.contact');})->name('contact');
