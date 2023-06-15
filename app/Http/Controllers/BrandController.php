@@ -4,41 +4,28 @@ namespace App\Http\Controllers;
 
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
-use App\Models\TypeProduct;
+use App\Models\Brand;
 
-class TypeProductController extends Controller
+class BrandController extends Controller
 {
 
     public function index()
-    {}
-
+    {    }
 
     public function create()
-    {
-    }
-
+    {}
 
     public function store()
-    {
-       }
-
-
+    {}
     public function show()
-    {
-     }
-
+    {   }
 
     public function edit()
-    {
-     }
-
+    {  }
 
     public function update()
-    {
-     }
-
+    {}
 
     public function destroy()
-    {
-    }
+    {}
 }

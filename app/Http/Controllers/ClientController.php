@@ -1,84 +1,97 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
+use App\Models\Client;
+use App\Models\User;
 
 class ClientController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+
     public function index()
     {
-        //
+        $user = auth()->user();
+        $clients = $user->clients;
+        
+        return view('clients.index', ['clients' => $clients]);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+
     public function create()
     {
-        //
+        return view('clients.create');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
+
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'name' => 'required',
+            'last_name' => 'required',
+            'email' => 'required|email',
+            'phone_number' => 'required',
+            'direction' => 'required',
+            'birthday' => 'required|date',
+        ]);
+
+        // Create a new user
+        $user = new User;
+        $user->name = $request->input('name');
+        $user->email = $request->input('email');
+        $user->password = bcrypt($request->input('password')); // Set a default password
+        $user->save();
+
+        // Create a new client and associate it with the user
+        $client = new Client;
+        $client->name = $request->input('name');
+        $client->last_name = $request->input('last_name');
+        $client->email = $request->input('email');
+        $client->phone_number = $request->input('phone_number');
+        $client->direction = $request->input('direction');
+        $client->birthday = $request->input('birthday');
+        $client->user_id = $user->id; // Assign the user ID to the client
+        $client->save();
+
+        return redirect()->route('clients.index')->with('success', 'A new client has been created');
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
+
+    public function show(string $id)
     {
-        //
+        $client = Client::find($id);
+
+        return view('clients.show', ['client' => $client]);
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
+
+    public function edit(string $id)
     {
-        //
+        $client = Client::find($id);
+        return view('clients.edit', ['client' => $client]);
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
+
+    public function update(Request $request, string $id)
     {
-        //
+        $client = Client::find($id);
+        $client->name = $request->input('name');
+        $client->last_name = $request->input('last_name');
+        $client->email = $request->input('email');
+        $client->phone_number = $request->input('phone_number');
+        $client->direction = $request->input('direction');
+        $client->birthday = $request->input('birthday');
+        $client->save();
+
+        return redirect()->route('clients.index')->with('success', 'Client updated successfully');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
+
+    public function destroy(string $id)
     {
-        //
+        $client = Client::find($id);
+        $client->delete();
+
+        return redirect()->route('clients.index')->with('success', 'A client has been removed');
     }
 }

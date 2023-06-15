@@ -23,6 +23,8 @@ return new class extends Migration
             $table->date('birthday');
             $table->enum('Gender', ['Masc', 'Femn', 'NoB'] )->default('NoB');
             $table->string('notes')->nullable()->default('no notes');
+            $table->unsignedBigInteger('user_id')->nullable();
+            $table->foreign('user_id')->references('id')->on('users');            
             $table->timestamps();
         });
     }
