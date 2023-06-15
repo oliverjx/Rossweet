@@ -19,7 +19,7 @@ return new class extends Migration
             $table->foreign('client_id')->references('id')->on('clients');
             $table->unsignedBigInteger('user_id')->nullable();
             $table->foreign('user_id')->references('id')->on('users');
-            $table->enum('state',['en espera','cancelada','aceptada','entregada'])->nullable()->default('en espera');
+            $table->enum('state',['en espera','cancelada','aceptada','entregada'])->nullable();
             $table->date('date_delivered');
             $table->timestamps();
         });
