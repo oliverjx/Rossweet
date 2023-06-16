@@ -1,6 +1,7 @@
 @extends('layouts.main')
 @section('relleno')
 
+
     <!-- Start Content Page -->
     <div class="container-fluid bg-light py-5">
         <div class="col-md-6 m-auto text-center">
@@ -68,4 +69,5 @@
     </div>
     <!-- End Contact -->
 
-    @endsection
+
+@endsection

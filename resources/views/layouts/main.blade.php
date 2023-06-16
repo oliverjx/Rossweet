@@ -118,15 +118,6 @@ https://templatemo.com/tm-559-zay-shop
         </div>
     </div>
 
-
-
-    <!-- Start Banner Hero -->
-    <div id="template-mo-zay-hero-carousel" class="carousel slide" data-bs-ride="carousel">
-        <ol class="carousel-indicators">
-            <li data-bs-target="#template-mo-zay-hero-carousel" data-bs-slide-to="0" class="active"></li>
-            <li data-bs-target="#template-mo-zay-hero-carousel" data-bs-slide-to="1"></li>
-            <li data-bs-target="#template-mo-zay-hero-carousel" data-bs-slide-to="2"></li>
-        </ol>
  @yield('relleno')
     <!-- End Featured Product -->
 
@@ -165,11 +156,11 @@ https://templatemo.com/tm-559-zay-shop
                     <h2 class="h2 text-light border-bottom pb-3 border-light">Navegación
                     </h2>
                     <ul class="list-unstyled text-light footer-link-list">
-                        <li><a class="text-decoration-none" href="index.html">Inicio</a></li>
-                        <li><a class="text-decoration-none" href="about.html">Sobre nosotros</a></li>
+                        <li><a class="text-decoration-none" href="{{route('index')}}">Inicio</a></li>
+                        <li><a class="text-decoration-none" href="{{route('about')}}">Sobre nosotros</a></li>
                         <li><a class="text-decoration-none" href="https://goo.gl/maps/tTgzkbXEm52WXiKq5">Ubicación tienda</a></li>
                         <!-- <li><a class="text-decoration-none" href="#">FAQs</a></li> -->
-                        <li><a class="text-decoration-none" href="contact.html">Contacto</a></li>
+                        <li><a class="text-decoration-none" href="{{route('contact')}}">Contacto</a></li>
                     </ul>
                 </div>
 
