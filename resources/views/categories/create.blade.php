@@ -12,7 +12,7 @@
                             <p>agrega una nueva categoria</p>
 
                             <div class="row py-5">
-                                <form class="col-md-9 m-auto" method="post" role="form">
+                                <form class="col-md-9 m-auto" method="post" action="{{route('categories.store')}}" role="form">
 
                                     <div class="form-group col-md-6 mb-3">
                                         <label for="inputname">Nombre</label>
