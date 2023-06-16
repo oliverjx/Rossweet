@@ -51,9 +51,9 @@
                     <div class="col-md-6 pb-4">
                         <div class="d-flex">
                             <select class="form-control">
-                                <option>Featured</option>
-                                <option>A to Z</option>
-                                <option>Item</option>
+                                <option>Destacados</option>
+                                <option>A a Z</option>
+                                <option>Articulos</option>
                             </select>
                         </div>
                     </div>
