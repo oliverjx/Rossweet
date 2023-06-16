@@ -22,7 +22,7 @@ primer año.
                     </p>
                 </div>
                 <div class="col-md-4">
-                    <img src="assets/img/about-hero.svg" alt="About Hero">
+                    <img src="{{ asset('img/sobre-nosotros.jpg') }}" alt="About Hero">
                 </div>
             </div>
         </div>
