@@ -25,11 +25,11 @@ Route::get('/about',        function () {    return view('layouts.about');})->na
 Route::get('/contact',      function () {    return view('layouts.contact');})->name('contact');
 Route::get('/shop-single',  function () {    return view('layouts.shop-single');})->name('shop-single');
 Route::get('/shop',         function () {    return view('layouts.shop');})->name('shop');
-Route::get('/',             function () {    return view('layouts.index'); });
+Route::get('/',             function () {    return view('layouts.index'); })->name('/');
 
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/home',   function () {    return view('layouts.index');})->name('home');
 
 
 // USERS
@@ -74,7 +74,6 @@ Route::delete('/orders/{id}', [OrderController::class, 'destroy'])->name('orders
 Route::put('/orders/{id}/accepted', [OrderController::class, 'accepted'])->name('orders.accepted');
 Route::put('/orders/{id}/canceled', [OrderController::class, 'canceled'])->name('orders.canceled');
 Route::put('/orders/{id}/delivered', [OrderController::class, 'delivered'])->name('orders.delivered');
-
 
 // FAVORITES
 
