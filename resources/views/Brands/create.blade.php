@@ -1,3 +1,4 @@
+
 @extends('layouts.main')
 @section('relleno')
     <!-- Open Content -->
@@ -8,26 +9,21 @@
                 <div class="col-lg-7 mt-5">
                     <div class="card">
                         <div class="card-body">
-                            <h1 class="h2">Agrega Categorias:</h1>
-                            <p>agrega una nueva categoria</p>
+                            <h1 class="h2">Agrega Marcas:</h1>
+                            <p>Agrega una nueva marca</p>
 
                             <div class="row py-5">
-                                <form class="col-md-9 m-auto" method="post" action="{{route('categories.store')}}" role="form">
+                                <form class="col-md-9 m-auto" method="post" role="form">
 
                                     <div class="form-group col-md-6 mb-3">
-                                        <label for="inputname">Nombre</label>
-                                        <input type="text" class="form-control mt-1" id="name" name="name"
-                                            placeholder="nombre">
+                                        <label for="inputname">Modelo</label>
+                                        <input type="text" class="form-control mt-1" id="model" name="model"
+                                            placeholder="Modelo">
                                     </div>
                                     <div class="mb-3">
-                                        <label for="inputmessage">Descripcion</label>
-                                        <textarea class="form-control mt-1" id="description" name="description" placeholder="descripcion" rows="8"></textarea>
-                                    </div>
-                                    <div class="mb-3">
-                                        
-                                        <label class="" for="inputGroupFile01">Foto</label>
+                                        <label class="" for="inputGroupFile01">Imagen</label>
                                         <input type="file" class="form-control" id="inputGroupFile01" accept="image/*">
-                                      </div>
+                                    </div>
                                     <div class="row">
                                     </div>
                                 </form>

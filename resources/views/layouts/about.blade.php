@@ -8,11 +8,21 @@
                 <div class="col-md-8 text-white">
                     <h1>Sobre Nosotros</h1>
                     <p>
-                        poner texto
+                        Nuestra repostería se llamará "RosSweet" y ofrecerá una
+amplia variedad de productos de repostería de alta calidad,
+incluyendo pasteles, cupcakes, panadería, postres
+personalizados y catering para eventos. Estamos ubicados en
+una zona céntrica y accesible de la ciudad y nos enfocaremos
+en satisfacer a un público objetivo de jóvenes adultos y
+familias que buscan productos artesanales y de excelente
+calidad. Nuestros objetivos son crecer en el mercado local y
+expandirnos en línea. Esperamos generar ingresos anuales
+de $100,000 y obtener un margen de beneficio del 20% en el
+primer año.
                     </p>
                 </div>
                 <div class="col-md-4">
-                    <img src="assets/img/about-hero.svg" alt="About Hero">
+                    <img width="70%"  src="{{ asset('img/sobre-nosotros.jpg') }}" alt="About Hero">
                 </div>
             </div>
         </div>
@@ -41,6 +51,8 @@
                         </i>
                     </div>
                     <h2 class="h5 mt-4 text-center">Misión</h2>
+                    <p class="text-center"> Poder brindar postres de calidad y eficiencia, en donde podamos crear un sentido de pertenencia con el cliente 
+                        al este interecatuar con nuestro servicio </p>
                 </div>
             </div>
 
@@ -57,6 +69,8 @@
                         <i class="fad fa-pie"></i>
                     </div>
                     <h2 class="h5 mt-4 text-center">Visión</h2>
+                    <p class="text-center">Ser reconocidos como una de las resposterias online mas grande de la ciudad 
+                        con un nivel de eficiencia y rendimiento superior</p>
                 </div>
             </div>
 
@@ -70,6 +84,12 @@
                         </i>
                     </div>
                     <h2 class="h5 mt-4 text-center">Valores</h2>
+                    <p class="text-center">
+                        Trabajo en equipo <br>
+                        calidad <br>
+                        transparencia <br>
+                        carisma <br>
+                        responsabilidad <br></p>
                 </div>
             </div>
         </div>
