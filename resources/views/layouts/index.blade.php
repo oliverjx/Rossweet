@@ -85,7 +85,7 @@
         </div>
         <div class="row">
             <div class="col-12 col-md-4 p-5 mt-3">
-                <a href="#"><img src="./assets/img/SLJ_Triple-Berry-Cheesecake_9_inch.jpg" class="rounded-circle img-fluid border"></a>
+                <a href="#"><img src="./assets/img/reposteria.jpg" class="rounded-circle img-fluid border"></a>
                 <h5 class="text-center mt-3 mb-3">Postres</h5>
                 <p class="text-center"><a class="btn btn-success">Comprar</a></p>
             </div>
@@ -95,7 +95,7 @@
                 <p class="text-center"><a class="btn btn-success">Go Shop</a></p>
             </div> -->
             <div class="col-12 col-md-4 p-5 mt-3">
-                <a href="#"><img src="./assets/img/cq5dam.thumbnail.400.400.jpeg" class="rounded-circle img-fluid border"></a>
+                <a href="#"><img src="./assets/img/panaderia.jpg" class="rounded-circle img-fluid border"></a>
                 <h2 class="h5 text-center mt-3 mb-3">Panadería</h2>
                 <p class="text-center"><a class="btn btn-success">Comprar</a></p>
             </div>
