@@ -12,18 +12,12 @@
     <link rel="stylesheet" href="assets/css/bootstrap.min.css">
     <link rel="stylesheet" href="assets/css/templatemo.css">
     <link rel="stylesheet" href="assets/css/custom.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
 
     <!-- Load fonts style after rendering the layout styles -->
-    <link rel="stylesheet"
-        href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;200;300;400;500;700;900&display=swap">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;200;300;400;500;700;900&display=swap">
     <link rel="stylesheet" href="assets/css/fontawesome.min.css">
-    <!--
-    
-TemplateMo 559 Zay Shop
-
-https://templatemo.com/tm-559-zay-shop
-
--->
 </head>
 
 <body>
@@ -33,18 +27,14 @@ https://templatemo.com/tm-559-zay-shop
             <div class="w-100 d-flex justify-content-between">
                 <div>
                     <i class="fa fa-envelope mx-2"></i>
-                    <a class="navbar-sm-brand text-light text-decoration-none"
-                        href="mailto:info@company.com">rossweet@gmail.com</a>
+                    <a class="navbar-sm-brand text-light text-decoration-none" href="mailto:info@company.com">rossweet@gmail.com</a>
                     <i class="fa fa-phone mx-2"></i>
                     <a class="navbar-sm-brand text-light text-decoration-none" href="tel:010-020-0340">809-247-0340</a>
                 </div>
                 <div>
-                    <a class="text-light" href="https://fb.com/templatemo" target="_blank" rel="sponsored"><i
-                            class="fab fa-facebook-f fa-sm fa-fw me-2"></i></a>
-                    <a class="text-light" href="https://www.instagram.com/rossweetbyso/" target="_blank"><i
-                            class="fab fa-instagram fa-sm fa-fw me-2"></i></a>
-                    <a class="text-light" href="https://twitter.com/" target="_blank"><i
-                            class="fab fa-twitter fa-sm fa-fw me-2"></i></a>
+                    <a class="text-light" href="https://fb.com/templatemo" target="_blank" rel="sponsored"><i class="fab fa-facebook-f fa-sm fa-fw me-2"></i></a>
+                    <a class="text-light" href="https://www.instagram.com/rossweetbyso/" target="_blank"><i class="fab fa-instagram fa-sm fa-fw me-2"></i></a>
+                    <a class="text-light" href="https://twitter.com/" target="_blank"><i class="fab fa-twitter fa-sm fa-fw me-2"></i></a>
                 </div>
             </div>
         </div>
@@ -60,14 +50,11 @@ https://templatemo.com/tm-559-zay-shop
                 RosSweet
             </a>
 
-            <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse"
-                data-bs-target="#templatemo_main_nav" aria-controls="navbarSupportedContent" aria-expanded="false"
-                aria-label="Toggle navigation">
+            <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#templatemo_main_nav" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
 
-            <div class="align-self-center collapse navbar-collapse flex-fill  d-lg-flex justify-content-lg-between"
-                id="templatemo_main_nav">
+            <div class="align-self-center collapse navbar-collapse flex-fill  d-lg-flex justify-content-lg-between" id="templatemo_main_nav">
                 <div class="flex-fill">
                     <ul class="nav navbar-nav d-flex justify-content-between mx-lg-auto">
                         <li class="nav-item">
@@ -93,8 +80,7 @@ https://templatemo.com/tm-559-zay-shop
                             </div>
                         </div>
                     </div>
-                    <a class="nav-icon d-none d-lg-inline" href="#" data-bs-toggle="modal"
-                        data-bs-target="#templatemo_search">
+                    <a class="nav-icon d-none d-lg-inline" href="#" data-bs-toggle="modal" data-bs-target="#templatemo_search">
                         <i class="fa fa-fw fa-search text-dark mr-2"></i>
                     </a>
 
@@ -102,88 +88,85 @@ https://templatemo.com/tm-559-zay-shop
                     <ul class="navbar-nav ms-auto">
                         <!-- Authentication Links -->
                         @guest
-                            @if (Route::has('login'))
-                                <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
-                                </li>
-                            @endif
+                        @if (Route::has('login'))
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
+                        </li>
+                        @endif
 
-                            @if (Route::has('register'))
-                                <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
-                                </li>
-                            @endif
+                        @if (Route::has('register'))
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
+                        </li>
+                        @endif
                         @else
-                            <li class="nav-item dropdown">
-                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
-                                    data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                    {{ Auth::user()->name }}
+                        <li class="nav-item dropdown">
+                            <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                {{ Auth::user()->name }}
+                            </a>
+
+                            <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                                @if (Auth::user()->rol == 'user')
+                                <a class="dropdown-item" href="{{ route('/') }}">
+                                    Mi Cuenta
                                 </a>
 
-                                <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                                    @if (Auth::user()->rol == 'user')
-                                        <a class="dropdown-item" href="{{ route('/') }}">
-                                            Mi Cuenta
-                                        </a>
+                                <a class="dropdown-item" href="{{ route('orders.index') }}">
+                                    Mis Pedidos
+                                </a>
+                                <a class="dropdown-item" href="{{ route('favorites.index') }}">
+                                    Favoritos
+                                </a>
+                                @endif
+                                @if (Auth::user()->rol == 'employee')
+                                <a class="dropdown-item" href="{{ route('/') }}">
+                                    Mi Cuenta
+                                </a>
 
-                                        <a class="dropdown-item" href="{{ route('orders.index') }}">
-                                            Mis Pedidos
-                                        </a>
-                                        <a class="dropdown-item" href="{{ route('favorites.index') }}">
-                                            Favoritos
-                                        </a>
-                                    @endif
-                                    @if (Auth::user()->rol == 'employee')
-                                        <a class="dropdown-item" href="{{ route('/') }}">
-                                            Mi Cuenta
-                                        </a>
+                                <a class="dropdown-item" href="{{ route('orders.index') }}">
+                                    Pedidos
+                                </a>
+                                @endif
+                                @if (Auth::user()->rol == 'admin')
+                                <a class="dropdown-item" href="{{ route('/') }}">
+                                    Mi Cuenta
+                                </a>
 
-                                        <a class="dropdown-item" href="{{ route('orders.index') }}">
-                                            Pedidos 
-                                        </a>
-                                    @endif
-                                    @if (Auth::user()->rol == 'admin')
-                                        <a class="dropdown-item" href="{{ route('/') }}">
-                                            Mi Cuenta
-                                        </a>
+                                <a class="dropdown-item" href="{{ route('users.index') }}">
+                                    Usuarios
+                                </a>
+                                <a class="dropdown-item" href="{{ route('clients.index') }}">
+                                    Clientes
+                                </a>
+                                <a class="dropdown-item" href="{{ route('products.index') }}">
+                                    Productos
+                                </a>
+                                <a class="dropdown-item" href="{{ route('categories.index') }}">
+                                    Categorias
+                                </a>
+                                <a class="dropdown-item" href="{{ route('typeProducts.index') }}">
+                                    Tipos
+                                </a>
+                                <a class="dropdown-item" href="{{ route('orders.index') }}">
+                                    Ordenes
+                                </a>
+                                <a class="dropdown-item" href="{{ route('brands.index') }}">
+                                    Marcas
+                                </a>
+                                @endif
+                                <hr class="dropdown-divider">
 
-                                        <a class="dropdown-item" href="{{ route('users.index') }}">
-                                            Usuarios
-                                        </a>
-                                        <a class="dropdown-item" href="{{ route('clients.index') }}">
-                                            Clientes
-                                        </a>
-                                        <a class="dropdown-item" href="{{ route('products.index') }}">
-                                            Productos
-                                        </a>
-                                        <a class="dropdown-item" href="{{ route('categories.index') }}">
-                                            Categorias
-                                        </a>
-                                        <a class="dropdown-item" href="{{ route('typeProducts.index') }}">
-                                            Tipos
-                                        </a>
-                                        <a class="dropdown-item" href="{{ route('orders.index') }}">
-                                            Ordenes
-                                        </a>
-                                        <a class="dropdown-item" href="{{ route('brands.index') }}">
-                                            Marcas
-                                        </a>
-                                    @endif
-                                    <hr class="dropdown-divider">
-
-                                    <a class="dropdown-item" href="{{ route('logout') }}"
-                                        onclick="event.preventDefault();
+                                <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
                                                          document.getElementById('logout-form').submit();">
-                                        {{ __('Logout') }}
-                                    </a>
+                                    {{ __('Logout') }}
+                                </a>
 
-                                    <form id="logout-form" action="{{ route('logout') }}" method="POST"
-                                        class="d-none">
-                                        @csrf
-                                    </form>
+                                <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                    @csrf
+                                </form>
 
-                                </div>
-                            </li>
+                            </div>
+                        </li>
                         @endguest
                     </ul>
                 </div>
@@ -196,16 +179,14 @@ https://templatemo.com/tm-559-zay-shop
     <!-- Modal -->
 
     <!-- Modal -->
-    <div class="modal fade bg-white" id="templatemo_search" tabindex="-1" role="dialog"
-        aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal fade bg-white" id="templatemo_search" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-lg" role="document">
             <div class="w-100 pt-1 mb-5 text-right">
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <form action="" method="get" class="modal-content modal-body border-0 p-0">
                 <div class="input-group mb-2">
-                    <input type="text" class="form-control" id="inputModalSearch" name="q"
-                        placeholder="Search ...">
+                    <input type="text" class="form-control" id="inputModalSearch" name="q" placeholder="Search ...">
                     <button type="submit" class="input-group-text bg-success text-light">
                         <i class="fa fa-fw fa-search text-white"></i>
                     </button>
@@ -214,7 +195,7 @@ https://templatemo.com/tm-559-zay-shop
         </div>
     </div>
 
- @yield('relleno')
+    @yield('relleno')
     <!-- End Featured Product -->
 
 
@@ -289,30 +270,31 @@ https://templatemo.com/tm-559-zay-shop
             </div>
         </div>
         <div class="w-100 bg-black py-3">
-             <div class="container">
-                    <div class="row pt-2">
-                        <div class="col-12">
-                            <p class="text-left text-light">
-                                Copyright &copy; 2023 RosSweet
-                                | Designed by <a rel="sponsored" href="#" target="_blank">nosotros</a>
-                            </p>
-                        </div>
+            <div class="container">
+                <div class="row pt-2">
+                    <div class="col-12">
+                        <p class="text-left text-light">
+                            Copyright &copy; 2023 RosSweet
+                            | Designed by <a rel="sponsored" href="#" target="_blank">nosotros</a>
+                        </p>
                     </div>
                 </div>
             </div>
+        </div>
 
-        </footer>
-        <!-- End Footer -->
+    </footer>
+    <!-- End Footer -->
 
-        <!-- Start Script -->
-        <script src="assets/js/jquery-1.11.0.min.js"></script>
-        <script src="assets/js/jquery-migrate-1.2.1.min.js"></script>
-        <script src="assets/js/bootstrap.bundle.min.js"></script>
-        <script src="assets/js/templatemo.js"></script>
-        <script src="assets/js/custom.js"></script>
-        <!-- End Script -->
+    <!-- Start Script -->
+    <script src="assets/js/jquery-1.11.0.min.js"></script>
+    <script src="assets/js/jquery-migrate-1.2.1.min.js"></script>
+    <script src="assets/js/bootstrap.bundle.min.js"></script>
+    <script src="assets/js/templatemo.js"></script>
+    <script src="assets/js/custom.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
-        
+    <!-- End Script -->
 </body>
 
 </html>
