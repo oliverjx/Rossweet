@@ -294,7 +294,7 @@ https://templatemo.com/tm-559-zay-shop
                         <div class="col-12">
                             <p class="text-left text-light">
                                 Copyright &copy; 2023 RosSweet
-                                | Designed by <a rel="sponsored" href="#" target="_blank">Keila</a>
+                                | Designed by <a rel="sponsored" href="#" target="_blank">nosotros</a>
                             </p>
                         </div>
                     </div>
