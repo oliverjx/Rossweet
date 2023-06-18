@@ -77,7 +77,7 @@ https://templatemo.com/tm-559-zay-shop
                             <a class="nav-link" href="{{ route('about') }}">Sobre</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ route('shop-single') }}">Tienda</a>
+                            <a class="nav-link" href="{{ route('shop') }}">Tienda</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="{{ route('contact') }}">Contacto</a>
