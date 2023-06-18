@@ -1,127 +1,51 @@
 @extends('layouts.main')
+
 @section('relleno')
     <!-- Open Content -->
     <section class="bg-light">
         <div class="container pb-5">
-            <div class="row">
-                <!-- col end -->
-                <div class="col-lg-7 mt-5">
+            <div class="row justify-content-center">
+                <div class="col-lg-10 mt-5">
                     <div class="card">
                         <div class="card-body">
-                            <h1 class="h2">Agrega Categorias:</h1>
-                       
-                            <table class="table align-middle mb-0 bg-white">
-  <thead class="bg-light">
-    <tr>
-      <th>Name</th>
-      <th>Title</th>
-      <th>Status</th>
-      <th>Position</th>
-      <th>Actions</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>
-        <div class="d-flex align-items-center">
-          <img
-              src="https://mdbootstrap.com/img/new/avatars/8.jpg"
-              alt=""
-              style="width: 45px; height: 45px"
-              class="rounded-circle"
-              />
-          <div class="ms-3">
-            <p class="fw-bold mb-1">John Doe</p>
-            <p class="text-muted mb-0">john.doe@gmail.com</p>
-          </div>
-        </div>
-      </td>
-      <td>
-        <p class="fw-normal mb-1">Software engineer</p>
-        <p class="text-muted mb-0">IT department</p>
-      </td>
-      <td>
-        <span class="badge badge-success rounded-pill d-inline">Active</span>
-      </td>
-      <td>Senior</td>
-      <td>
-        <button type="button" class="btn btn-link btn-sm btn-rounded">
-          Edit
-        </button>
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <div class="d-flex align-items-center">
-          <img
-              src="https://mdbootstrap.com/img/new/avatars/6.jpg"
-              class="rounded-circle"
-              alt=""
-              style="width: 45px; height: 45px"
-              />
-          <div class="ms-3">
-            <p class="fw-bold mb-1">Alex Ray</p>
-            <p class="text-muted mb-0">alex.ray@gmail.com</p>
-          </div>
-        </div>
-      </td>
-      <td>
-        <p class="fw-normal mb-1">Consultant</p>
-        <p class="text-muted mb-0">Finance</p>
-      </td>
-      <td>
-        <span class="badge badge-primary rounded-pill d-inline"
-              >Onboarding</span
-          >
-      </td>
-      <td>Junior</td>
-      <td>
-        <button
-                type="button"
-                class="btn btn-link btn-rounded btn-sm fw-bold"
-                data-mdb-ripple-color="dark"
-                >
-          Edit
-        </button>
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <div class="d-flex align-items-center">
-          <img
-              src="https://mdbootstrap.com/img/new/avatars/7.jpg"
-              class="rounded-circle"
-              alt=""
-              style="width: 45px; height: 45px"
-              />
-          <div class="ms-3">
-            <p class="fw-bold mb-1">Kate Hunington</p>
-            <p class="text-muted mb-0">kate.hunington@gmail.com</p>
-          </div>
-        </div>
-      </td>
-      <td>
-        <p class="fw-normal mb-1">Designer</p>
-        <p class="text-muted mb-0">UI/UX</p>
-      </td>
-      <td>
-        <span class="badge badge-warning rounded-pill d-inline">Awaiting</span>
-      </td>
-      <td>Senior</td>
-      <td>
-        <button
-                type="button"
-                class="btn btn-link btn-rounded btn-sm fw-bold"
-                data-mdb-ripple-color="dark"
-                >
-          Edit
-        </button>
-      </td>
-    </tr>
-  </tbody>
-</table>
+                            <h1 class="h2">Categorías:</h1>
 
-                            
+                            <div class="table-responsive">
+                                <table class="table align-middle mb-0 bg-white">
+                                    <thead class="bg-light">
+                                        <tr>
+                                            <th>Name</th>
+                                            <th>Description</th>
+                                            <th>Created</th>
+                                            <th>Actions</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @foreach ($categories as $category)
+                                            <tr>
+                                                <td>{{ $category->name }}</td>
+                                                <td>{{ $category->description }}</td>
+                                                <td>{{ $category->created_at }}</td>
+                                                <td>
+                                                    <a href="{{ route('categories.edit', ['id' => $category->id]) }}"
+                                                        class="btn btn-primary btn-sm rounded-square">
+                                                        <i class="bi bi-eye"></i>
+                                                    </a>
+                                                    <form action="{{ route('categories.destroy', ['id' => $category->id]) }}"
+                                                        method="POST" style="display: inline-block;">
+                                                        @csrf
+                                                        @method('DELETE')
+                                                        <button type="submit"
+                                                            class="btn btn-danger btn-sm rounded-square">
+                                                            <i class="bi bi-trash"></i>
+                                                        </button>
+                                                    </form>
+                                                </td>
+                                            </tr>
+                                        @endforeach
+                                    </tbody>
+                                </table>
+                            </div>
                         </div>
                     </div>
                 </div>

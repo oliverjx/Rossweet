@@ -156,16 +156,16 @@ https://templatemo.com/tm-559-zay-shop
                                         <a class="dropdown-item" href="{{ route('products.index') }}">
                                             Productos
                                         </a>
-                                        <a class="dropdown-item" href="{{ route('/') }}">
+                                        <a class="dropdown-item" href="{{ route('categories.index') }}">
                                             Categorias
                                         </a>
-                                        <a class="dropdown-item" href="{{ route('/') }}">
+                                        <a class="dropdown-item" href="{{ route('typeProducts.index') }}">
                                             Tipos
                                         </a>
                                         <a class="dropdown-item" href="{{ route('orders.index') }}">
                                             Ordenes
                                         </a>
-                                        <a class="dropdown-item" href="{{ route('/') }}">
+                                        <a class="dropdown-item" href="{{ route('brands.index') }}">
                                             Marcas
                                         </a>
                                     @endif
