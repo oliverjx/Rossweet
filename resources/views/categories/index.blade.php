@@ -8,42 +8,68 @@
                 <div class="col-lg-10 mt-5">
                     <div class="card">
                         <div class="card-body">
-                            <h1 class="h2">Agrega Categorias:</h1>
-                            <p>agrega una nueva categoria</p>
+                            <h1 class="h2">Categorias</h1>
+                            <p></p>
 
-                            <div class="row py-5">
-                                <form class="col-md-9 m-auto" method="post" action="{{route('categories.store')}}" role="form">
+                            <button type="button" class="btn btn-primary" data-toggle="modal"
+                                data-target="#exampleModalCenter">
+                                Crea una nueva categoria
+                            </button>
 
-                                    <div class="form-group col-md-6 mb-3">
-                                        <label for="inputname">Nombre</label>
-                                        <input type="text" class="form-control mt-1" id="name" name="name"
-                                            placeholder="nombre">
-                                    </div>
-                                    <div class="mb-3">
-                                        <label for="inputmessage">Descripcion</label>
-                                        <textarea class="form-control mt-1" id="description" name="description" placeholder="descripcion" rows="8"></textarea>
-                                    </div>
-                                    
-                                    <div class="row">
-                                        <form action="" method="GET">
-                                            <input type="hidden" name="product-title" value="Activewear">
-                                            <div class="row pb-3">
-                                                <div class="col d-grid">
-                                                    <button type="submit" class="btn btn-success btn-lg" name="submit"
-                                                        value="buy">Agregar</button>
-                                                </div>
-                                     
+                            {{-- modal del formulario para agregar --}}
+                            <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog"
+                                aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                                <div class="modal-dialog modal-dialog-centered" role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="exampleModalLongTitle">Crear Categoria - form</h5>
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                            </button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <div class="row py-5">
+                                                <form class="col-md-9 m-auto" method="post"
+                                                    action="{{ route('categories.store') }}" role="form">
+
+                                                    <div class="form-group col-md-6 mb-3">
+                                                        <label for="inputname">Nombre</label>
+                                                        <input type="text" class="form-control mt-1" id="name"
+                                                            name="name" placeholder="nombre">
+                                                    </div>
+                                                    <div class="mb-3">
+                                                        <label for="inputmessage">Descripcion</label>
+                                                        <textarea class="form-control mt-1" id="description" name="description" placeholder="descripcion" rows="8"></textarea>
+                                                    </div>
+
+                                                    <div class="row">
+                                                        <form action="" method="GET">
+                                                            <input type="hidden" name="product-title" value="Activewear">
+                                                            <div class="row pb-3">
+                                                                <div class="col d-grid">
+                                                                    <button type="submit" class="btn btn-success btn-lg"
+                                                                        name="submit" value="buy">Crear</button>
+                                                                </div>
+
+                                                            </div>
+                                                    </div>
+                                                </form>
                                             </div>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary"
+                                                data-dismiss="modal">Close</button>
+                                            <button type="button" class="btn btn-primary">Save changes</button>
+                                        </div>
                                     </div>
-                                </form>
+                                </div>
                             </div>
 
-                           
-                            </form>
+
 
                         </div>
                         <div class="card-body">
-                            
+
 
                             <div class="table-responsive">
                                 <table class="table align-middle mb-0 bg-white">
