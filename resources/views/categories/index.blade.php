@@ -71,12 +71,12 @@
                                         </div>
                                         <div class="modal-body">
                                             <div class="row py-5">
-                                                <form class="col-md-9 m-auto" method="post"
+                                                <form id="edit-category-form" class="col-md-9 m-auto" method="post"
                                                     action="{{ route('categories.update', ['category' => ':category_id']) }}"
-                                                    role="form">
+                                                    >
                                                     @csrf
                                                     @method('PATCH')
-
+                                                    <input type="hidden" name="category_id" id="edit-category-id" value="">
                                                     <div class="form-group col-md-6 mb-3">
                                                         <label for="inputname">Nombre</label>
                                                         <input type="text" class="form-control mt-1" id="edit-name"
@@ -103,6 +103,7 @@
                                     </div>
                                 </div>
                             </div>
+
                         </div>
 
                         {{-- tabla de categorias --}}
@@ -131,12 +132,14 @@
                                                     </button>
 
                                                     <form
-                                                        action="{{ route('categories.destroy', ['id' => $category->id]) }}"
+                                                        action="{{ route('categories.destroy', [$category]) }}"
                                                         method="POST" style="display: inline-block;">
                                                         @csrf
                                                         @method('DELETE')
-                                                        <button type="submit"
-                                                            class="btn btn-danger btn-sm rounded-square">
+                                                        <button type="button"
+                                                            class="btn btn-danger btn-sm rounded-square"
+                                                            data-toggle="modal"
+                                                            data-target="#confirmationModal-{{ $category->id }}">
                                                             <svg xmlns="http://www.w3.org/2000/svg" width="16"
                                                                 height="16" fill="currentColor" class="bi bi-trash"
                                                                 viewBox="0 0 16 16">
@@ -146,6 +149,40 @@
                                                                     d="M4.5 1.5v-.5A1.5 1.5 0 0 1 6 .5h4a1.5 1.5 0 0 1 1.5 1.5v.5h-8z" />
                                                             </svg>
                                                         </button>
+
+                                                        <!-- Modal de confirmación -->
+                                                        <div class="modal fade" id="confirmationModal-{{ $category->id }}"
+                                                            tabindex="-1" role="dialog"
+                                                            aria-labelledby="confirmationModalLabel-{{ $category->id }}"
+                                                            aria-hidden="true">
+                                                            <div class="modal-dialog modal-dialog-centered"
+                                                                role="document">
+                                                                <div class="modal-content">
+                                                                    <div class="modal-header">
+                                                                        <h5 class="modal-title"
+                                                                            id="confirmationModalLabel-{{ $category->id }}">
+                                                                            Confirmar eliminación</h5>
+                                                                    </div>
+                                                                    <div class="modal-body">
+                                                                        <p>¿Estás seguro de que deseas eliminar la categoría
+                                                                            {{ $category->name }} ?</p>
+                                                                    </div>
+                                                                    <div class="modal-footer">
+                                                                        <button type="button" class="btn btn-secondary"
+                                                                            data-dismiss="modal">Cancelar</button>
+                                                                        <form
+                                                                            action="{{ route('categories.destroy', [$category]) }}"
+                                                                            method="POST" style="display: inline-block;">
+                                                                            @csrf
+                                                                            @method('DELETE')
+                                                                            <button type="submit"
+                                                                                class="btn btn-danger">Eliminar</button>
+                                                                        </form>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+
                                                     </form>
                                                 </td>
                                             </tr>
@@ -160,33 +197,28 @@
         </div>
     </section>
     <!-- Close Content -->
-@endsection
-@section('scripts')
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script>
         $(document).ready(function() {
             $('#exampleModalCenter-edit').on('show.bs.modal', function(event) {
                 var button = $(event.relatedTarget); // Obtener el botón que desencadenó el evento
                 var categoryId = button.data('category-id'); // Obtener el ID de la categoría
                 var categoryName = button.data('category-name'); // Obtener el nombre de la categoría
-                var categoryDescription = button.data('category-description'); // Obtener la descripción de la categoría
+                var categoryDescription = button.data(
+                'category-description'); // Obtener la descripción de la categoría
 
                 // Asignar los valores a los campos del formulario de edición
                 $(this).find('#edit-name').val(categoryName);
                 $(this).find('#edit-description').val(categoryDescription);
-                
+                $(this).find('#edit-category-id').val(categoryId);
+
                 // Actualizar la acción del formulario para que incluya el ID de la categoría
                 var formAction = "{{ route('categories.update', ['category' => ':category_id']) }}";
                 formAction = formAction.replace(':category_id', categoryId);
-                $(this).find('form').attr('action', formAction);
+                $(this).find('#edit-category-form').attr('action', formAction);
             });
         });
-        if($(document).ready(function())){
-            alert.sucess();
-        }else{
-            alert();
-        }
-
+        
     </script>
 @endsection

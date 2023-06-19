@@ -17,12 +17,6 @@ class CategoryController extends Controller
     }
 
 
-    public function create()
-    {
-        return view('categories.create');
-    }
-
-
     public function store(Request $request)
     {
         $request->validate([
@@ -49,38 +43,28 @@ class CategoryController extends Controller
     }
 
 
-    public function edit(string $id)
-    {
-        $category = Category::find($id);
 
-        if (!$category) {
-            return redirect()->route('categories.index')->with('error', 'Category not found');
-        }
-
-        return view('categories.edit', ['category' => $category]);
-    }
-
-
-
-    public function update(Request $request, string $id)
+    public function update(Request $request, Category $category)
     {
         $request->validate([
-            'name' => 'required|min:2',
+            'edit-name' => 'required|min:2',
         ]);
-        $category = Category::find($id);
+
         $category->name = $request->input('edit-name');
         $category->description = $request->input('edit-description');
         $category->save();
 
         return redirect()->route('categories.index')->with('success', 'Category updated successfully');
     }
+    
 
 
-    public function destroy(string $id)
+    public function destroy(Category $category)
     {
-        $category = Category::find($id);
         $category->delete();
 
-        return redirect()->route('categories.index')->with('success', 'A category has been removed');
+        return redirect()->route('categories.index')->with('success', 'Category deleted successfully');
     }
+
+
 }

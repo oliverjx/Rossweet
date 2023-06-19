@@ -28,11 +28,17 @@ Route::get('/contact',      function () {    return view('layouts.contact');})->
 Route::get('/shop-single',  function () {    return view('layouts.shop-single');})->name('shop-single');
 Route::get('/shop',         function () {    return view('layouts.shop');})->name('shop');
 Route::get('/',             function () {    return view('layouts.index'); })->name('/');
+Route::get('/mail',             function () {    return view('mail.enviar_email'); })->name('mail');
 
 Auth::routes();
 
 Route::get('/home',   function () {    return view('layouts.index');})->name('home');
 
+//MAIL 
+
+use App\Http\Controllers\EnviarCorreoController;
+
+Route::post('/enviar-correo', [EnviarCorreoController::class, 'enviar'])->name('enviar.correo');
 
 // USERS
 
@@ -49,17 +55,14 @@ Route::get('/users/{id}/disable', [UserController::class, 'disable'])->name('use
 Route::get('/users/{id}/enable', [UserController::class, 'enable'])->name('users.enable');
 
 
-// CATEGORIES
+// CATEGORY
 
 use App\Http\Controllers\CategoryController;
 
 Route::get('/categories', [CategoryController::class, 'index'])->name('categories.index');
-Route::get('/categories/create', [CategoryController::class, 'create'])->name('categories.create');
 Route::post('/categories', [CategoryController::class, 'store'])->name('categories.store');
-Route::get('categories/{id}', [CategoryController::class, 'show'])->name('categories.show');
-Route::get('/categories/{id}/edit', [CategoryController::class, 'edit'])->name('categories.edit');
 Route::patch('/categories/{category}', [CategoryController::class, 'update'])->name('categories.update');
-Route::delete('/categories/{id}', [CategoryController::class, 'destroy'])->name('categories.destroy');
+Route::delete('/categories/{category}', [CategoryController::class, 'destroy'])->name('categories.destroy');
 
 
 // TYPE PRODUCT

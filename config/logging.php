@@ -51,6 +51,12 @@ return [
     */
 
     'channels' => [
+        
+        'mail' => [
+            'driver' => 'monolog',
+            'level' => 'info',
+        ],        
+
         'stack' => [
             'driver' => 'stack',
             'channels' => ['single'],
