@@ -1,5 +1,4 @@
 @extends('layouts.main')
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 
 @section('relleno')
     <!-- Open Content -->

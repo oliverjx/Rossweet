@@ -42,9 +42,6 @@
                                             <button type="submit" class="btn btn-danger btn-lg" name="submit"
                                                 value="delete" form="delete-form">Eliminar</button>
                                         </div>
-                                        <div class="col d-grid">
-                                            <a href="{{ route('categories.index') }}" class="btn btn-light btn-lg">Regresar</a>
-                                        </div>
                                     </div>
                                 </form>
                                 <form id="delete-form" action="{{ route('categories.destroy', ['category' => $category->id]) }}" method="POST" style="display: none;">
