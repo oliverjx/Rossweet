@@ -66,9 +66,11 @@
                         <li class="nav-item">
                             <a class="nav-link" href="{{ route('about') }}">Sobre</a>
                         </li>
+                        @if(Auth::check() && Auth::user()->rol == 'user')
                         <li class="nav-item">
                             <a class="nav-link" href="{{ route('shop') }}">Tienda</a>
                         </li>
+                        @endif
                         <li class="nav-item">
                             <a class="nav-link" href="{{ route('contact') }}">Contacto</a>
                         </li>
