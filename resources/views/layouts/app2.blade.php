@@ -45,7 +45,7 @@
     <nav class="navbar navbar-expand-lg navbar-light shadow">
         <div class="container d-flex justify-content-between align-items-center">
 
-            <a class="navbar-brand text-success logo h1 align-self-center">
+            <a class="navbar-brand text-success logo h1 align-self-center" href="{{ route('index') }}">
                 RosSweet
             </a>
 
@@ -81,22 +81,22 @@
                                 {{ Auth::user()->name }}
                             </a>
 
-                           
-                                <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
+
+                            <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
                                                          document.getElementById('logout-form').submit();">
-                                    {{ __('Logout') }}
-                                </a>
+                                {{ __('Logout') }}
+                            </a>
 
-                                <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                                    @csrf
-                                </form>
+                            <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                @csrf
+                            </form>
 
-                            </div>
-                        </li>
-                        @endguest
-                    </ul>
                 </div>
+                </li>
+                @endguest
+                </ul>
             </div>
+        </div>
 
         </div>
     </nav>
