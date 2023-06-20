@@ -69,27 +69,21 @@ Route::delete('/categories/{category}', [CategoryController::class, 'destroy'])-
 
 use App\Http\Controllers\TypeProductController;
 
-Route::get('/typeProducts', [TypeProductController::class, 'index'])->name('typeProducts.index');
-Route::get('/typeProducts/create', [TypeProductController::class, 'create'])->name('typeProducts.create');
-Route::post('/typeProducts', [TypeProductController::class, 'store'])->name('typeProducts.store');
-Route::get('/typeProducts/{id}', [TypeProductController::class, 'show'])->name('typeProducts.show');
-Route::get('/typeProducts/{id}/edit', [TypeProductController::class, 'edit'])->name('typeProducts.edit');
-Route::put('/typeProducts/{id}', [TypeProductController::class, 'update'])->name('typeProducts.update');
-Route::delete('/typeProducts/{id}', [TypeProductController::class, 'destroy'])->name('typeProducts.destroy');
+
+Route::get('/type-products', [TypeProductController::class, 'index'])->name('typeProducts.index');
+Route::post('/type-products', [TypeProductController::class, 'store'])->name('typeProducts.store');
+Route::get('/type-products/{id}', [TypeProductController::class, 'show'])->name('typeProducts.show');
+Route::put('/type-products/{typeProduct}', [TypeProductController::class, 'update'])->name('typeProducts.update');
+Route::delete('/type-products/{typeProduct}', [TypeProductController::class, 'destroy'])->name('typeProducts.destroy');
 
 // BRANDS
-
 
 use App\Http\Controllers\BrandController;
 
 Route::get('/brands', [BrandController::class, 'index'])->name('brands.index');
-Route::get('/brands/create', [BrandController::class, 'create'])->name('brands.create');
 Route::post('/brands', [BrandController::class, 'store'])->name('brands.store');
-Route::get('/brands/{id}', [BrandController::class, 'show'])->name('brands.show');
-Route::get('/brands/{id}/edit', [BrandController::class, 'edit'])->name('brands.edit');
-Route::put('/brands/{id}', [BrandController::class, 'update'])->name('brands.update');
-Route::delete('/brands/{id}', [BrandController::class, 'destroy'])->name('brands.destroy');
-
+Route::patch('/brands/{brand}', [BrandController::class, 'update'])->name('brands.update');
+Route::delete('/brands/{brand}', [BrandController::class, 'destroy'])->name('brands.destroy');
 
 // PRODUCT
 

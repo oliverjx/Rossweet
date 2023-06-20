@@ -11,32 +11,32 @@ class BrandController extends Controller
 
     public function index()
     {
-
         $brands = Brand::all();
 
         return view('brands.index', ['brands' => $brands]);
     }
 
 
-    public function create()
-    {
-        return view('brands.create');
-    }
-
-
     public function store(Request $request)
     {
         $request->validate([
-            'model' => 'required|min:2',
-            'img' => 'required',
+            'model' => 'required|min:2|unique:brands',
+            'img' => 'required|image',
         ]);
 
         $brand = new Brand;
         $brand->model = $request->input('model');
-        $brand->img = $request->input('img');
+        
+        // Guardar la imagen en la carpeta "public/img"
+        $imagePath = $request->file('img')->store('public/img');
+        
+        // Obtener solo el nombre de la imagen
+        $imageName = basename($imagePath);
+
+        $brand->img = $imageName;
         $brand->save();
 
-        return redirect()->route('brands.index')->with('success', 'A new brand has been created');
+        return redirect()->route('brands.index')->with('success', 'Se ha creado una nueva marca.');
     }
 
 
@@ -48,27 +48,29 @@ class BrandController extends Controller
     }
 
 
-    public function edit(string $id)
+    public function update(Request $request, Brand $brand)
     {
-        $brand = Brand::find($id);
-        return view('brands.edit', ['brand' => $brand]);
-    }
-
-
-    public function update(Request $request, string $id)
-    {
-        $brand = Brand::find($id);
-        $brand->model = $request->input('model');
-        $brand->img = $request->input('img');
+        $request->validate([
+            'edit-model' => 'required|min:2',
+        ]);
+    
+        $brand->model = $request->input('edit-model');
+    
+        if ($request->hasFile('edit-img') && $request->file('edit-img')->isValid()) {
+            $imagePath = $request->file('edit-img')->store('public/img');
+            // Obtener solo el nombre de la imagen
+            $imageName = basename($imagePath);
+            $brand->img = $imageName;
+        }
+    
         $brand->save();
-
+    
         return redirect()->route('brands.index')->with('success', 'Brand updated successfully');
     }
+    
 
-
-    public function destroy(string $id)
+    public function destroy(Brand $brand)
     {
-        $brand = Brand::find($id);
         $brand->delete();
 
         return redirect()->route('brands.index')->with('success', 'A brand has been removed');

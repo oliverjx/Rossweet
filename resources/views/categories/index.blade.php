@@ -78,7 +78,7 @@
                                                     @method('PATCH')
                                                     <input type="hidden" name="category_id" id="edit-category-id" value="">
                                                     <div class="form-group col-md-6 mb-3">
-                                                        <label for="inputname">Nombre</label>
+                                                        <label for="edit-name">Nombre</label>
                                                         <input type="text" class="form-control mt-1" id="edit-name"
                                                             name="edit-name" placeholder="Nombre" value="">
                                                     </div>
@@ -89,8 +89,7 @@
                                                     </div>
                                                     <div class="row pb-3">
                                                         <div class="col d-grid">
-                                                            <button type="submit" class="btn btn-success btn-lg"
-                                                                name="submit" value="update">Actualizar</button>
+                                                            <button type="submit" class="btn btn-success btn-lg" name="submit" value="update">Actualizar</button>
                                                         </div>
                                                     </div>
                                                 </form>
@@ -197,7 +196,6 @@
         </div>
     </section>
     <!-- Close Content -->
-
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script>
         $(document).ready(function() {
