@@ -11,15 +11,9 @@ class TypeProductController extends Controller
 
     public function index()
     {
-        $typeProducts = TypeProduct::all();
+        $typesProducts = TypeProduct::all();
 
-        return view('typeProducts.index', ['typeProducts' => $typeProducts]);
-    }
-
-
-    public function create()
-    {
-        return view('typeProducts.create');
+        return view('typeProducts.index', ['typesProducts' => $typesProducts]);
     }
 
 
@@ -34,41 +28,27 @@ class TypeProductController extends Controller
         $typeProduct->description = $request->input('description') ?? 'no description';
         $typeProduct->save();
 
-        return redirect()->route('typeProducts.index')->with('success', 'A new type product has been created');
+        return redirect()->route('typesProducts.index')->with('success', 'A new type product has been created');
     }
 
 
-    public function show(string $id)
+
+    public function update(Request $request, TypeProduct $typeProduct)
     {
-        $typeProduct = TypeProduct::find($id);
-
-        return view('typeProducts.show', ['typeProduct' => $typeProduct]);
-    }
-
-
-    public function edit(string $id)
-    {
-        $typeProduct = TypeProduct::find($id);
-        return view('typeProducts.edit', ['typeProduct' => $typeProduct]);
-    }
-
-
-    public function update(Request $request, string $id)
-    {
-        $typeProduct = TypeProduct::find($id);
-        $typeProduct->name = $request->input('name');
-        $typeProduct->description = $request->input('description') ?? 'no description';
+        
+        $typeProduct->name = $request->input('edit-name');
+        $typeProduct->description = $request->input('edit-description') ?? 'no description';
         $typeProduct->save();
 
-        return redirect()->route('typeProducts.index')->with('success', 'Type product updated successfully');
+        return redirect()->route('typesProducts.index')->with('success', 'Type product updated successfully');
     }
 
 
-    public function destroy(string $id)
+    public function destroy(TypeProduct $typeProduct)
     {
-        $typeProduct = TypeProduct::find($id);
+        
         $typeProduct->delete();
 
-        return redirect()->route('typeProducts.index')->with('success', 'A type product has been removed');
+        return redirect()->route('typesProducts.index')->with('success', 'A type product has been removed');
     }
 }

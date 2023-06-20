@@ -118,7 +118,7 @@
             <div class="row">
                 <div class="col-12 col-md-4 mb-4">
                     <div class="card h-100">
-                        <a href="shop-single.html">
+                        <a href="{{ route('shop') }}">
                             <img src="./assets/img/pexels-acharaporn-kamornboonyarush-1028714.jpg" class="card-img-top" alt="...">
                         </a>
                         <div class="card-body">
@@ -132,7 +132,7 @@
                                 </li>
                                 <li class="text-muted text-right">$240.00</li>
                             </ul>
-                            <a href="shop-single.html" class="h2 text-decoration-none text-dark">Tarta de chocolate triple</a>
+                            <a href="{{ route('shop') }}" class="h2 text-decoration-none text-dark">Tarta de chocolate triple</a>
                             <p class="card-text">
                                 Un delicioso postre con capas de bizcocho de chocolate, relleno de crema de chocolate y cubierto con una ganache brillante. Un clásico irresistible para los amantes del chocolate.                            </p>
                             <p class="text-muted">Reseñas (24)</p>
@@ -141,7 +141,7 @@
                 </div>
                 <div class="col-12 col-md-4 mb-4">
                     <div class="card h-100">
-                        <a href="shop-single.html">
+                        <a href="{{ route('shop-single') }}">
                             <img src="./assets/img/cheesecake_de_frutos_rojos_73941_orig.jpg" class="card-img-top" alt="...">
                         </a>
                         <div class="card-body">
@@ -155,9 +155,9 @@
                                 </li>
                                 <li class="text-muted text-right">$480.00</li>
                             </ul>
-                            <a href="shop-single.html" class="h2 text-decoration-none text-dark">Cheesecake de frutos rojos</a>
+                            <a href="{{ route('shop-single') }}" class="h2 text-decoration-none text-dark">Cheesecake de frutos rojos</a>
                             <p class="card-text">
-                                Un suave y cremoso cheesecake con una base de galleta crujiente, decorado con una generosa capa de frutos rojos frescos. El equilibrio perfecto entre dulce y ácido.                            </p>
+                                Un suave y cremoso cheesecake con una base de galleta crujiente, decorado con una generosa capa de frutos rojos frescos. El equilibrio perfecto entre dulce y ácido.</p>
                             <p class="text-muted">Reseñas (48)</p>
                         </div>
                     </div>

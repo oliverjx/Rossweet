@@ -70,11 +70,10 @@ Route::delete('/categories/{category}', [CategoryController::class, 'destroy'])-
 use App\Http\Controllers\TypeProductController;
 
 
-Route::get('/type-products', [TypeProductController::class, 'index'])->name('typeProducts.index');
-Route::post('/type-products', [TypeProductController::class, 'store'])->name('typeProducts.store');
-Route::get('/type-products/{id}', [TypeProductController::class, 'show'])->name('typeProducts.show');
-Route::put('/type-products/{typeProduct}', [TypeProductController::class, 'update'])->name('typeProducts.update');
-Route::delete('/type-products/{typeProduct}', [TypeProductController::class, 'destroy'])->name('typeProducts.destroy');
+Route::get('/type-products', [TypeProductController::class, 'index'])->name('typesProducts.index');
+Route::post('/type-products', [TypeProductController::class, 'store'])->name('typesProducts.store');
+Route::patch('/type-products/{typeProduct}', [TypeProductController::class, 'update'])->name('typesProducts.update');
+Route::delete('/type-products/{typeProduct}', [TypeProductController::class, 'destroy'])->name('typesProducts.destroy');
 
 // BRANDS
 
