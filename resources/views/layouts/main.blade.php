@@ -79,17 +79,7 @@
                     </ul>
                 </div>
                 <div class="navbar align-self-center d-flex">
-                    <div class="d-lg-none flex-sm-fill mt-3 mb-4 col-7 col-sm-auto pr-3">
-                        <div class="input-group">
-                            <input type="text" class="form-control" id="inputMobileSearch" placeholder="Search ...">
-                            <div class="input-group-text">
-                                <i class="fa fa-fw fa-search"></i>
-                            </div>
-                        </div>
-                    </div>
-                    <a class="nav-icon d-none d-lg-inline" href="#" data-bs-toggle="modal" data-bs-target="#templatemo_search">
-                        <i class="fa fa-fw fa-search text-dark mr-2"></i>
-                    </a>
+                
 
 
                     <ul class="navbar-nav ms-auto">
@@ -229,12 +219,12 @@
                     </ul>
                 </div>
 
-                <div class="col-md-4 pt-5">
+                <!-- <div class="col-md-4 pt-5">
                     <h2 class="h2 text-light border-bottom pb-3 border-light">Productos</h2>
                     <ul class="list-unstyled text-light footer-link-list">
                         <li><a class="text-decoration-none" href="#">...</a></li>
                     </ul>
-                </div>
+                </div> -->
 
                 <div class="col-md-4 pt-5">
                     <h2 class="h2 text-light border-bottom pb-3 border-light">Navegación
