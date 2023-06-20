@@ -28,6 +28,7 @@ Route::get('/contact',      function () {    return view('layouts.contact');})->
 Route::get('/shop-single',  function () {    return view('layouts.shop-single');})->name('shop-single');
 Route::get('/shop',         function () {    return view('layouts.shop');})->name('shop');
 Route::get('/',             function () {    return view('layouts.index'); })->name('/');
+Route::get('/login',             function () {    return view('Auth.login'); })->name('/login');
 Route::get('/mail',             function () {    return view('mail.enviar_email'); })->name('mail');
 
 Auth::routes();
@@ -127,6 +128,7 @@ use App\Http\Controllers\ClientController;
 
 Route::get('/clients', [ClientController::class, 'index'])->name('clients.index');
 Route::post('/clients', [ClientController::class, 'store'])->name('clients.store');
+Route::post('/registered', [ClientController::class, 'register'])->name('registered');
 Route::patch('/clients/{client}', [ClientController::class, 'update'])->name('clients.update');
 Route::delete('/clients/{client}', [ClientController::class, 'destroy'])->name('clients.destroy');
 

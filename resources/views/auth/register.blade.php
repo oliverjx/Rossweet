@@ -105,14 +105,13 @@
                             <label for="genero" class="col-md-4 col-form-label text-md-end">{{ __('Género') }}</label>
 
                             <div class="col-md-6">
-                                <select id="genero" class="form-control @error('genero') is-invalid @enderror" name="genero" required autocomplete="genero" autofocus>
-                                    <option value="selecciona">Selecciona</option>
-                                    <option value="femenino">Femenino</option>
-                                    <option value="masculino">Masculino</option>
-                                    <option value="no_binario">No binario</option>
+                                <select id="gender" class="form-control @error('gender') is-invalid @enderror" name="gender" required autocomplete="genero" autofocus>
+                                    <option value="femn">Femenino</option>
+                                    <option value="masc">Masculino</option>
+                                    <option value="NoB">No binario</option>
                                 </select>
 
-                                @error('genero')
+                                @error('gender')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
                                 </span>
