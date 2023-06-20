@@ -67,8 +67,7 @@
                                         <div class="modal-body">
                                             <div class="row py-5">
                                                 <form id="edit-type-product-form" class="col-md-9 m-auto" method="post"
-                                                    action="{{ route('typesProducts.update', ['typeProduct' => ':type_product_id']) }}"
-                                                    >
+                                                    action="{{ route('typesProducts.update', ['typeProduct' => ':type_product_id']) }}">
                                                     @csrf
                                                     @method('PATCH')
                                                     <input type="hidden" name="type_product_id" id="edit-type-product-id" value="">
@@ -204,12 +203,12 @@
                 // Asignar los valores a los campos del formulario de edición
                 $(this).find('#edit-name').val(typeProductName);
                 $(this).find('#edit-description').val(typeProductDescription);
-                $(this).find('#edit-category-id').val(typeProductId);
+                $(this).find('#edit-type-product-id').val(typeProductId);
 
                 // Actualizar la acción del formulario para que incluya el ID del tipo de producto
                 var formAction = "{{ route('typesProducts.update', ['typeProduct' => ':type_product_id']) }}";
                 formAction = formAction.replace(':type_product_id', typeProductId);
-                $(this).find('#edit-category-form').attr('action', formAction);
+                $(this).find('#edit-type-product-form').attr('action', formAction);
             });
         });
         

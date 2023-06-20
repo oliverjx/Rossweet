@@ -2,19 +2,22 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Category;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use App\Models\Product;
+use App\Models\TypeProduct;
 
 class ProductController extends Controller
 {
 
     public function index()
     {
-        $user = auth()->user();
-        $products = $user->products;
 
-        return view('products.index', ['products' => $products]);
+        $products = Product::all();
+        $categories = Category::all();
+        $types = TypeProduct::all();
+        return view('products.index', ['products' => $products, 'categories' => $categories, 'types' => $types]);
     }
 
 

@@ -11,8 +11,7 @@ class ClientController extends Controller
 
     public function index()
     {
-        $user = auth()->user();
-        $clients = $user->clients;
+        $clients = Client::all();
         
         return view('clients.index', ['clients' => $clients]);
     }
@@ -50,6 +49,7 @@ class ClientController extends Controller
         $client->phone_number = $request->input('phone_number');
         $client->direction = $request->input('direction');
         $client->birthday = $request->input('birthday');
+        $client->gender = $request->input('gender');
         $client->user_id = $user->id; // Assign the user ID to the client
         $client->save();
 
@@ -57,12 +57,6 @@ class ClientController extends Controller
     }
 
 
-    public function show(string $id)
-    {
-        $client = Client::find($id);
-
-        return view('clients.show', ['client' => $client]);
-    }
 
 
     public function edit(string $id)
@@ -72,24 +66,33 @@ class ClientController extends Controller
     }
 
 
-    public function update(Request $request, string $id)
+    public function update(Request $request, Client $client)
     {
-        $client = Client::find($id);
-        $client->name = $request->input('name');
-        $client->last_name = $request->input('last_name');
-        $client->email = $request->input('email');
-        $client->phone_number = $request->input('phone_number');
-        $client->direction = $request->input('direction');
-        $client->birthday = $request->input('birthday');
+        $request->validate([
+            'edit-name' =>'required',
+            'edit-last_name' =>'required',
+            'edit-email' =>'required|email',
+            'edit-phone_number' =>'required',
+            'edit-direction' =>'required',
+            'edit-birthday' =>'required|date',
+        ]);
+
+        $client->name = $request->input('edit-name');
+        $client->last_name = $request->input('edit-lastname');
+        $client->email = $request->input('edit-email');
+        $client->phone_number = $request->input('edit-phonenumber');
+        $client->direction = $request->input('edit-direction');
+        $client->birthday = $request->input('edit-birthday');
+        $client->gender = $request->input('edit-gender');
+        $client->notes = $request->input('edit-notes');
         $client->save();
 
         return redirect()->route('clients.index')->with('success', 'Client updated successfully');
     }
 
 
-    public function destroy(string $id)
+    public function destroy(Client $client)
     {
-        $client = Client::find($id);
         $client->delete();
 
         return redirect()->route('clients.index')->with('success', 'A client has been removed');
