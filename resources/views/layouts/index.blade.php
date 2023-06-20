@@ -85,9 +85,8 @@
         </div>
         <div class="row">
             <div class="col-12 col-md-4 p-5 mt-3">
-                <a href="#"><img src="{{ asset('img/reposteria.jpg') }}" alt="About Hero" class="rounded-circle img-fluid border"></a>
+                <a><img src="{{ asset('img/reposteria.jpg') }}" alt="About Hero" class="rounded-circle img-fluid border"></a>
                 <h5 class="text-center mt-3 mb-3">Postres</h5>
-                <p class="text-center"><a class="btn btn-success">Comprar</a></p>
             </div>
             <!-- <div class="col-12 col-md-4 p-5 mt-3">
                 <a href="#"><img src="./assets/img/category_img_02.jpg" class="rounded-circle img-fluid border"></a>
@@ -95,9 +94,8 @@
                 <p class="text-center"><a class="btn btn-success">Go Shop</a></p>
             </div> -->
             <div class="col-12 col-md-4 p-5 mt-3">
-                <a href="#"><img src="{{ asset('img/panaderia.jpg') }}" class="rounded-circle img-fluid border"></a>
+                <a><img src="{{ asset('img/panaderia.jpg') }}" class="rounded-circle img-fluid border"></a>
                 <h2 class="h5 text-center mt-3 mb-3">Panadería</h2>
-                <p class="text-center"><a class="btn btn-success">Comprar</a></p>
             </div>
         </div>
     </section>
@@ -123,13 +121,13 @@
                         </a>
                         <div class="card-body">
                             <ul class="list-unstyled d-flex justify-content-between">
-                                <li>
+                                <!-- <li>
                                     <i class="text-warning fa fa-star"></i>
                                     <i class="text-warning fa fa-star"></i>
                                     <i class="text-warning fa fa-star"></i>
                                     <i class="text-muted fa fa-star"></i>
                                     <i class="text-muted fa fa-star"></i>
-                                </li>
+                                </li> -->
                                 <li class="text-muted text-right">$240.00</li>
                             </ul>
                             <a href="{{ route('shop') }}" class="h2 text-decoration-none text-dark">Tarta de chocolate triple</a>
@@ -146,13 +144,13 @@
                         </a>
                         <div class="card-body">
                             <ul class="list-unstyled d-flex justify-content-between">
-                                <li>
+                                <!-- <li>
                                     <i class="text-warning fa fa-star"></i>
                                     <i class="text-warning fa fa-star"></i>
                                     <i class="text-warning fa fa-star"></i>
                                     <i class="text-muted fa fa-star"></i>
                                     <i class="text-muted fa fa-star"></i>
-                                </li>
+                                </li> -->
                                 <li class="text-muted text-right">$480.00</li>
                             </ul>
                             <a href="{{ route('shop-single') }}" class="h2 text-decoration-none text-dark">Cheesecake de frutos rojos</a>
@@ -169,13 +167,13 @@
                         </a>
                         <div class="card-body">
                             <ul class="list-unstyled d-flex justify-content-between">
-                                <li>
+                                <!-- <li>
                                     <i class="text-warning fa fa-star"></i>
                                     <i class="text-warning fa fa-star"></i>
                                     <i class="text-warning fa fa-star"></i>
                                     <i class="text-warning fa fa-star"></i>
                                     <i class="text-warning fa fa-star"></i>
-                                </li>
+                                </li> -->
                                 <li class="text-muted text-right">$360.00</li>
                             </ul>
                             <a href="shop-single.html" class="h2 text-decoration-none text-dark">Crème brûlée</a>
