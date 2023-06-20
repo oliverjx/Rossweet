@@ -12,4 +12,15 @@ class Product extends Model
     {
         return $this->hasMany(DetailOrder::class);
     }
+
+    public function category()
+{
+    return $this->belongsTo(Category::class);
+}
+public function typeProduct()
+{
+    return $this->belongsTo(TypeProduct::class);
+}
+
+
 }

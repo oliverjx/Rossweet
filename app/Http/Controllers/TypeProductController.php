@@ -35,14 +35,17 @@ class TypeProductController extends Controller
 
     public function update(Request $request, TypeProduct $typeProduct)
     {
-        
+        $request->validate([
+            'edit-name' => 'required|min:2',
+        ]);
+    
         $typeProduct->name = $request->input('edit-name');
         $typeProduct->description = $request->input('edit-description') ?? 'no description';
         $typeProduct->save();
-
+    
         return redirect()->route('typesProducts.index')->with('success', 'Type product updated successfully');
     }
-
+    
 
     public function destroy(TypeProduct $typeProduct)
     {

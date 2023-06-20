@@ -147,7 +147,7 @@
                                 <a class="dropdown-item" href="{{ route('categories.index') }}">
                                     Categorias
                                 </a>
-                                <a class="dropdown-item" href="{{ route('typeProducts.index') }}">
+                                <a class="dropdown-item" href="{{ route('typesProducts.index') }}">
                                     Tipos
                                 </a>
                                 <a class="dropdown-item" href="{{ route('orders.index') }}">
