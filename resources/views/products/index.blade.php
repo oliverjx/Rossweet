@@ -27,13 +27,18 @@
                                         <div class="modal-body">
                                             <div class="row py-5">
                                                 <form class="col-md-9 m-auto" method="post"
-                                                    action="{{ route('products.store') }}" role="form">
+                                                    action="{{ route('products.store') }}" role="form" enctype="multipart/form-data">
                                                     @csrf
                                                     <div class="form-group col-md-6 mb-3">
                                                         <label for="name">Nombre</label>
                                                         <input type="text" class="form-control mt-1" id="name"
                                                             name="name" placeholder="Nombre">
                                                     </div>
+                                                    <label for="img">Imagen</label>
+                                                    <input type="file" class="form-control-file mt-1" id="img"
+                                                        name="img" accept="image/*">
+                                                    <img id="img-preview" src="#" alt="Imagen de la marca"
+                                                        style="display: none;">
                                                     <div class="form-group col-md-6 mb-3">
                                                         <label for="price">Precio</label>
                                                         <input type="number" class="form-control mt-1" id="price"

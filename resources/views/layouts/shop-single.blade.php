@@ -79,25 +79,14 @@
 
                                                 <br>
                                                 <li class="list-inline-item text-right">
-                                                    Quantity
+                                                    Cantidad:
                                                     <div class="form-group">
-                                                        <label for="numero">Número:</label>
-                                                        <input type="text" class="form-control" id="numero" pattern="[0-9]*" inputmode="numeric" placeholder="Ingrese un número" required>
+                                                        <input type="text" name="quantity" class="form-control" id="c" pattern="[0-9]*" inputmode="numeric" placeholder="Ingrese un número" required>
                                                         <div class="invalid-feedback">
                                                           Ingrese un número válido.
                                                         </div>
                                                       </div>
-                                                      
-                                                    <input type="number" name="" id="">
-                                                    <input type="hidden" name="quantity" id="product-quanity"
-                                                        value="1">
-                                                </li>
-                                                <li class="list-inline-item"><span class="btn btn-success"
-                                                        id="btn-minus">-</span></li>
-                                                <li class="list-inline-item"><span class="badge bg-secondary"
-                                                        id="var-value">1</span></li>
-                                                <li class="list-inline-item"><span class="btn btn-success"
-                                                        id="btn-plus">+</span></li>
+                                                
                                             </ul>
                                         </div>
                                         
@@ -123,6 +112,14 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js"
     integrity="sha384-fbbOQedDUMZZ5KreZpsbe1LCZPVmfTnH7ois6mU1QK+m14rQ1l2bGBq41eYeM/fS" crossorigin="anonymous">
 </script>
+<script src="{{ asset('assets/js/jquery-1.11.0.min.js') }}"></script>
+    <script src="{{ asset('assets/js/jquery-migrate-1.2.1.min.js') }}"></script>
+    <script src="{{ asset('assets/js/bootstrap.bundle.min.js') }}"></script>
+    <script src="{{ asset('assets/js/templatemo.js') }}"></script>
+    <script src="{{ asset('assets/js/custom.js') }}"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
     </section>
     <!-- Close Content -->
 @endsection

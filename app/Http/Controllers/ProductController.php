@@ -77,6 +77,11 @@ class ProductController extends Controller
     {
         $product = Product::find($id);
         $product->name = $request->input('name');
+        // Guardar la imagen en la carpeta "public/img"
+        $imagePath = $request->file('img')->store('public/img');
+        // Obtener solo el nombre de la imagen
+        $imageName = basename($imagePath);
+        $product->img = $imageName;
         $product->price = $request->input('price');
         $product->description = $request->input('description');
         $product->time_lapse = $request->input('time_lapse');
