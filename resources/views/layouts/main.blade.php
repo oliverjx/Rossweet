@@ -31,9 +31,9 @@
             <div class="w-100 d-flex justify-content-between">
                 <div>
                     <i class="fa fa-envelope mx-2"></i>
-                    <a class="navbar-sm-brand text-light text-decoration-none" href="mailto:info@company.com">rossweet@gmail.com</a>
+                    <a class="navbar-sm-brand text-light text-decoration-none" href="mailto:RosSweetOficial@outlook.com">RosSweetOficial@outlook.com</a>
                     <i class="fa fa-phone mx-2"></i>
-                    <a class="navbar-sm-brand text-light text-decoration-none" href="tel:010-020-0340">809-247-0340</a>
+                    <a class="navbar-sm-brand text-light text-decoration-none" href="tel:809-944-1217">809-944-1217</a>
                 </div>
                 <div>
                     <a class="text-light" href="https://fb.com/templatemo" target="_blank" rel="sponsored"><i class="fab fa-facebook-f fa-sm fa-fw me-2"></i></a>
@@ -68,8 +68,6 @@
                             <a class="nav-link" href="{{ route('about') }}">Sobre</a>
                         </li>
                         @if (Auth::check() && Auth::user()->rol == 'user')
-                            
-                       
                         <li class="nav-item">
                             <a class="nav-link" href="{{ route('shop') }}">Productos</a>
                         </li>
@@ -206,11 +204,11 @@
                         </li>
                         <li>
                             <i class="fa fa-phone fa-fw"></i>
-                            <a class="text-decoration-none" href="tel:010-020-0340">809-405-4163</a>
+                            <a class="text-decoration-none" href="tel:809-944-1217">809-944-1217</a>
                         </li>
                         <li>
                             <i class="fa fa-envelope fa-fw"></i>
-                            <a class="text-decoration-none" href="mailto:info@company.com">RosSweet@gmail.com</a>
+                            <a class="text-decoration-none" href="mailto:RosSweetOficial@outlook.com">RosSweetOficial@outlook.com</a>
                         </li>
                     </ul>
                 </div>

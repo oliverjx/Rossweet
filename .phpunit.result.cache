@@ -1,0 +1,1 @@
+{"version":1,"defects":{"Tests\\Feature\\UserTest::testGetFullName":4,"Tests\\Feature\\UserTest::testSave":4},"times":{"Tests\\Unit\\ExampleTest::test_that_true_is_true":0.003,"Tests\\Feature\\UserTest::testGetFullName":2.83,"Tests\\Feature\\ExampleTest::test_the_application_returns_a_successful_response":0.052,"Tests\\Feature\\UserTest::testSave":0.184}}

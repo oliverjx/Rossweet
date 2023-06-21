@@ -104,6 +104,7 @@
     <!-- End Section -->
 
     <!-- Start Brands -->
+<<<<<<< HEAD
     @if ($Brands != null) { 
 
         <section class="bg-light py-5">
@@ -155,6 +156,18 @@
                         </div>
                     </div>
                 </div>
+=======
+    <section class="bg-light py-5">
+        <div class="container my-4">
+            <div class="row text-center py-3">
+                <div class="col-lg-6 m-auto">
+                    <h1 class="h1">Poner texto</h1>
+                    <p>
+                        Poner texto
+                    </p>
+                </div>
+              
+>>>>>>> 39fc97b22ea3bbb36c89b133c431816938e9ef20
             </div>
         </section>
     }
