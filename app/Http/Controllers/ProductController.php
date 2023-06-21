@@ -69,19 +69,25 @@ class ProductController extends Controller
     public function edit(string $id)
     {
         $product = Product::find($id);
-        return view('products.edit', ['product' => $product]);
+        $categories = Category::all();
+        $types = TypeProduct::all();
+        return view('products.edit', ['product' => $product, 'categories' => $categories, 'types' => $types]);
     }
 
 
     public function update(Request $request, string $id)
     {
+
         $product = Product::find($id);
-        $product->name = $request->input('name');
-        // Guardar la imagen en la carpeta "public/img"
-        $imagePath = $request->file('img')->store('public/img');
-        // Obtener solo el nombre de la imagen
-        $imageName = basename($imagePath);
-        $product->img = $imageName;
+        
+        
+        if ($request->hasFile('edit-img') && $request->file('edit-img')->isValid()) {
+            $imagePath = $request->file('edit-img')->store('public/img');
+            // Obtener solo el nombre de la imagen
+            $imageName = basename($imagePath);
+            $product->img = $imageName;
+        }
+       
         $product->price = $request->input('price');
         $product->description = $request->input('description');
         $product->time_lapse = $request->input('time_lapse');
