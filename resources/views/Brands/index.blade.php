@@ -134,12 +134,34 @@
                                                         Editar
                                                     </button>
 
-                                                    <form action="{{ route('brands.destroy', [$brand]) }}" method="POST"
-                                                        style="display: inline-block;">
+                                                    <form id="delete-brand-form-{{ $brand->id }}" action="{{ route('brands.destroy', [$brand]) }}" method="POST" style="display: inline-block;">
                                                         @csrf
                                                         @method('DELETE')
-                                                        <button type="submit" class="btn btn-danger">Eliminar</button>
+                                                    
+                                                        <!-- Botón "Eliminar" con modal de confirmación -->
+                                                        <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#delete-modal" data-brand-id="{{ $brand->id }}">Eliminar</button>
+                                                    
+                                                        <!-- Modal de confirmación para eliminar -->
+                                                        <div class="modal fade" id="delete-modal" tabindex="-1" role="dialog" aria-labelledby="delete-modal-label" aria-hidden="true">
+                                                            <div class="modal-dialog modal-dialog-centered" role="document">
+                                                                <div class="modal-content">
+                                                                    <div class="modal-header">
+                                                                        <h5 class="modal-title" id="delete-modal-label">Confirmar Eliminación</h5>
+                                                                    </div>
+                                                                    <div class="modal-body">
+                                                                        <p>¿Estás seguro de que deseas eliminar esta marca?</p>
+                                                                    </div>
+                                                                    <div class="modal-footer">
+                                                                        <!-- Botón de confirmación para eliminar -->
+                                                                        <button type="submit" class="btn btn-danger" form="delete-brand-form-{{ $brand->name }}">Eliminar</button>
+                                                                        <!-- Botón de cancelación para cerrar el modal -->
+                                                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
                                                     </form>
+                                                    
                                                 </td>
                                             </tr>
                                         @endforeach

@@ -1,22 +1,24 @@
 <?php
 
 namespace App\Http\Controllers;
+
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use App\Models\DetailOrder;
+use App\Models\Order;
 
 class DetailOrderController extends Controller
 {
 
     public function index(string $orderId)
     {
-        $user = auth()->user();
-        $order = $user->orders()->findOrFail($orderId);
+       
+        $order = Order::find($orderId);
         $detailOrders = $order->detailOrders;
-        
+
         return view('detail_orders.index', ['detailOrders' => $detailOrders]);
     }
-    
+
     public function create()
     {
         return view('detail_orders.create');
@@ -39,7 +41,7 @@ class DetailOrderController extends Controller
         $detailOrder->quantity = $request->input('quantity');
         $detailOrder->save();
 
-        return redirect()->route('detail_orders.index')->with('success', 'A new detail order has been created');
+        return redirect()->route('shop');
     }
 
 
@@ -60,6 +62,12 @@ class DetailOrderController extends Controller
 
     public function update(Request $request, string $id)
     {
+        $request->validate([
+
+            'price' => 'required',
+            'quantity' => 'required',
+        ]);
+
         $detailOrder = DetailOrder::find($id);
         $detailOrder->order_id = $request->input('order_id');
         $detailOrder->product_id = $request->input('product_id');
@@ -76,6 +84,6 @@ class DetailOrderController extends Controller
         $detailOrder = DetailOrder::find($id);
         $detailOrder->delete();
 
-        return redirect()->route('detail_orders.index')->with('success', 'A detail order has been removed');
+        return redirect()->route('orders.index')->with('success', 'Order delivered successfully');
     }
 }

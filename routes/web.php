@@ -1,5 +1,9 @@
 <?php
 
+use App\Models\Brand;
+use App\Models\Client;
+use App\Models\Order;
+use App\Models\Product;
 use Faker\Guesser\Name;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -19,21 +23,60 @@ use Illuminate\Support\Facades\Route;
 
 // LAYOOUT ROUTES
 
-Route::get('/form',        function () {    return view('layouts.form');})->name('form');
-Route::get('/prueba',        function () {    return view('layouts.prueba');})->name('prueba');
-Route::get('/table',        function () {    return view('layouts.table');})->name('table');
-Route::get('/index',        function () {    return view('layouts.index');})->name('index');
-Route::get('/about',        function () {    return view('layouts.about');})->name('about');
-Route::get('/contact',      function () {    return view('layouts.contact');})->name('contact');
-Route::get('/shop-single',  function () {    return view('layouts.shop-single');})->name('shop-single');
-Route::get('/shop',         function () {    return view('layouts.shop');})->name('shop');
-Route::get('/',             function () {    return view('layouts.index'); })->name('/');
-Route::get('/login',             function () {    return view('Auth.login'); })->name('/login');
-Route::get('/mail',             function () {    return view('mail.enviar_email'); })->name('mail');
+Route::get('/form',        function () {
+    return view('layouts.form');
+})->name('form');
+
+Route::get('/about', function () {
+    $brands = Brand::all();
+    return view('layouts.about', ['Brands' => $brands]);
+})->name('about');
+
+Route::get('/table',        function () {
+    return view('layouts.table');
+})->name('table');
+Route::get('/index',        function () {
+    return view('layouts.index');
+})->name('index');
+Route::get('/prueba',        function () {
+    return view('layouts.prueba');
+})->name('prueba');
+Route::get('/contact',      function () {
+    return view('layouts.contact');
+})->name('contact');
+
+
+Route::get('/shop-single/{product}', function ($productId) {
+$product = Product::find($productId);
+    $user = Auth::user();
+    $client = Client::where('user_id', $user->id)->first();
+    $orders = Order::where('client_id', $client->id)
+        ->whereNull('state')
+        ->get();
+
+    return view('layouts.shop-single', compact('orders', 'product'));
+})->name('shop-single');
+
+
+Route::get('/shop', function () {
+    $products = Product::where('disponibility', true)->get();
+    return view('layouts.shop', compact('products'));
+})->name('shop');
+Route::get('/',             function () {
+    return view('layouts.index');
+})->name('/');
+Route::get('/login',             function () {
+    return view('Auth.login');
+})->name('/login');
+Route::get('/mail',             function () {
+    return view('mail.enviar_email');
+})->name('mail');
 
 Auth::routes();
 
-Route::get('/home',   function () {    return view('layouts.index');})->name('home');
+Route::get('/home',   function () {
+    return view('layouts.index');
+})->name('home');
 
 //MAIL 
 
@@ -106,13 +149,13 @@ use App\Http\Controllers\OrderController;
 Route::get('/orders', [OrderController::class, 'index'])->name('orders.index');
 Route::get('/orders/create', [OrderController::class, 'create'])->name('orders.create');
 Route::post('/orders', [OrderController::class, 'store'])->name('orders.store');
-Route::get('/orders/{id}', [OrderController::class, 'show'])->name('orders.show');
-Route::get('/orders/{id}/edit', [OrderController::class, 'edit'])->name('orders.edit');
-Route::put('/orders/{id}', [OrderController::class, 'update'])->name('orders.update');
-Route::delete('/orders/{id}', [OrderController::class, 'destroy'])->name('orders.destroy');
-Route::put('/orders/{id}/accepted', [OrderController::class, 'accepted'])->name('orders.accepted');
-Route::put('/orders/{id}/canceled', [OrderController::class, 'canceled'])->name('orders.canceled');
-Route::put('/orders/{id}/delivered', [OrderController::class, 'delivered'])->name('orders.delivered');
+Route::get('/orders/{order}/edit', [OrderController::class, 'edit'])->name('orders.edit');
+Route::match(['PUT', 'PATCH'], '/orders/{id}', [OrderController::class, 'update'])->name('orders.update');
+Route::delete('/orders/{order}', [OrderController::class, 'destroy'])->name('orders.destroy');
+Route::patch('/orders/{id}/accepted', [OrderController::class, 'accepted'])->name('orders.accepted');
+Route::patch('/orders/{id}/canceled', [OrderController::class, 'canceled'])->name('orders.canceled');
+Route::patch('/orders/{id}/delivered', [OrderController::class, 'delivered'])->name('orders.delivered');
+Route::patch('/orders/{order}/deliver', [OrderController::class, 'deliver'])->name('orders.deliver');
 
 // FAVORITES
 
@@ -128,7 +171,6 @@ use App\Http\Controllers\ClientController;
 
 Route::get('/clients', [ClientController::class, 'index'])->name('clients.index');
 Route::post('/clients', [ClientController::class, 'store'])->name('clients.store');
-Route::post('/registered', [ClientController::class, 'register'])->name('registered');
 Route::patch('/clients/{client}', [ClientController::class, 'update'])->name('clients.update');
 Route::delete('/clients/{client}', [ClientController::class, 'destroy'])->name('clients.destroy');
 

@@ -20,8 +20,8 @@ return new class extends Migration
             $table->string('email');
             $table->string('phone_number');
             $table->string('direction');
-            $table->date('birthday');
-            $table->enum('Gender', ['Masc', 'Femn', 'NoB'] )->default('NoB');
+            $table->date('birthday')->nullable();
+            $table->enum('Gender', ['Masc', 'Femn', 'NoB'] )->nullable->default('NoB');
             $table->string('notes')->nullable()->default('no notes');
             $table->unsignedBigInteger('user_id')->nullable();
             $table->foreign('user_id')->references('id')->on('users');            

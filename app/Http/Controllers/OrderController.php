@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Client;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use App\Models\Order;
@@ -16,9 +17,15 @@ class OrderController extends Controller
         $user = auth()->user();
 
         if ($user->rol == 'user') {
-            $orders = $user->orders;
-
-            return view('orders.index', ['orders' => $orders]);
+        $user = Auth::user();
+        $client = Client::where('user_id', $user->id)->first();
+        if ($client) {
+            $orders = Order::where('client_id', $client->id)->get();
+        } else {
+            $orders = null;
+        }
+        
+        return view('orders.index', compact('orders'));
         }
         if ($user->rol == 'employee') {
             $filter = $request->input('filter');
@@ -38,61 +45,57 @@ class OrderController extends Controller
                         $orders = Order::where('state', 'entregada')->get();
                         break;
                     default:
-                        $orders = Order::all();
+                        $orders = Order::whereNotNull('state')
+                        ->get();
                         break;
                 }
             } else {
-                $orders = Order::all();
+                $orders = Order::whereNotNull('state')
+                ->get();
             }
         
-            return view('orders.index', ['orders' => $orders]);
+            return view('orders.index', ['orders' => $orders, 'filter' => $filter]);
         }
        
     }
-    
-    public function create()
-    {
-        return view('orders.create');
-    }
-
-
+ 
+   
     public function store(Request $request)
     {
-        $request->validate([
-            'client_id' => 'required',
-            'date_delivered' => 'required|date',
-        ]);
+        $user = Auth::user();
+        $client = Client::where('user_id', $user->id)->first();
 
-        $order = new Order;
-        $order->client_id = $request->input('client_id');
-        $order->user_id = Auth::id();
-        $order->state = 'en espera';
-        $order->date_delivered = $request->input('date_delivered');
-        $order->save();
+        if ($client) {
+            $order = new Order();
+            $order->client_id = $client->id;
+            $order->date_delivered = $request->input('date_delivered');
+            // $order->pay_method = $request->input('pay_method');
+            $order->state = null;
+            // Otros campos y lógica de validación aquí
+            $order->save();
 
-        return redirect()->route('orders.index')->with('success', 'A new order has been created');
+            // Redireccionar a la página de pedidos o mostrar un mensaje de éxito
+            return redirect()->route('orders.index')->with('success', 'Pedido agregado exitosamente.');
+        }
+
+        // Redireccionar a la página de pedidos o mostrar un mensaje de error
+        return redirect()->route('orders.index')->with('error', 'No se pudo agregar el pedido.');
     }
 
 
-    public function show(string $id)
+    public function edit(Order $order )
     {
-        $order = Order::find($id);
-
-        return view('orders.show', ['order' => $order]);
-    }
-
-
-    public function edit(string $id)
-    {
-        $order = Order::find($id);
         return view('orders.edit', ['order' => $order]);
+    }
+    public function show(Order $order )
+    {
+        return view('orders.show', ['order' => $order]);
     }
 
 
     public function update(Request $request, string $id)
     {
         $order = Order::find($id);
-        $order->client_id = $request->input('client_id');
         $order->date_delivered = $request->input('date_delivered');
         $order->save();
 
@@ -100,9 +103,8 @@ class OrderController extends Controller
     }
 
 
-    public function destroy(string $id)
+    public function destroy(Order $order)
     {
-        $order = Order::find($id);
         $order->delete();
 
         return redirect()->route('orders.index')->with('success', 'An order has been removed');
@@ -113,6 +115,7 @@ class OrderController extends Controller
     {
         $order = Order::find($id);
         $order->state = 'aceptada';
+        $order->user_id = Auth::user()->id;
         $order->save();
 
         return redirect()->route('orders.index')->with('success', 'Order accepted successfully');
@@ -123,6 +126,7 @@ class OrderController extends Controller
     {
         $order = Order::find($id);
         $order->state = 'cancelada';
+        $order->user_id = Auth::user()->id;
         $order->save();
 
         return redirect()->route('orders.index')->with('success', 'Order canceled successfully');
@@ -133,6 +137,14 @@ class OrderController extends Controller
     {
         $order = Order::find($id);
         $order->state = 'entregada';
+        $order->user_id = Auth::user()->id;
+        $order->save();
+
+        return redirect()->route('orders.index')->with('success', 'Order delivered successfully');
+    }
+    public function deliver(Order $order)
+    {
+        $order->state = 'en espera';
         $order->save();
 
         return redirect()->route('orders.index')->with('success', 'Order delivered successfully');

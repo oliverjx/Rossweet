@@ -139,7 +139,7 @@
                 </div>
                 <div class="col-12 col-md-4 mb-4">
                     <div class="card h-100">
-                        <a href="{{ route('shop-single') }}">
+                        <a href="">
                             <img src="./assets/img/cheesecake_de_frutos_rojos_73941_orig.jpg" class="card-img-top" alt="...">
                         </a>
                         <div class="card-body">
@@ -153,7 +153,7 @@
                                 </li> -->
                                 <li class="text-muted text-right">$480.00</li>
                             </ul>
-                            <a href="{{ route('shop-single') }}" class="h2 text-decoration-none text-dark">Cheesecake de frutos rojos</a>
+                            <a href="" class="h2 text-decoration-none text-dark">Cheesecake de frutos rojos</a>
                             <p class="card-text">
                                 Un suave y cremoso cheesecake con una base de galleta crujiente, decorado con una generosa capa de frutos rojos frescos. El equilibrio perfecto entre dulce y ácido.</p>
                             <p class="text-muted">Reseñas (48)</p>

@@ -9,9 +9,10 @@
     <link rel="apple-touch-icon" href="assets/img/apple-icon.png">
     <link rel="shortcut icon" type="image/x-icon" href="assets/img/favicon.ico">
 
-    <link rel="stylesheet" href="assets/css/bootstrap.min.css">
-    <link rel="stylesheet" href="assets/css/templatemo.css">
-    <link rel="stylesheet" href="assets/css/custom.css">
+    <link rel="stylesheet" href="{{ asset('assets/css/bootstrap.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/css/templatemo.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/css/custom.css') }}">
+    
 
 
     <!-- Load fonts style after rendering the layout styles -->
@@ -66,11 +67,11 @@
                         <li class="nav-item">
                             <a class="nav-link" href="{{ route('about') }}">Sobre</a>
                         </li>
-                        @if (Auth::check())
+                        @if (Auth::check() && Auth::user()->rol == 'user')
                             
                        
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ route('shop') }}">Tienda</a>
+                            <a class="nav-link" href="{{ route('shop') }}">Productos</a>
                         </li>
                         @endif
                         <li class="nav-item">
@@ -104,31 +105,26 @@
 
                             <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
                                 @if (Auth::user()->rol == 'user')
-                                <a class="dropdown-item" href="{{ route('/') }}">
+                                {{-- <a class="dropdown-item" href="{{ route('/') }}">
                                     Mi Cuenta
-                                </a>
+                                </a> --}}
 
                                 <a class="dropdown-item" href="{{ route('orders.index') }}">
                                     Mis Pedidos
                                 </a>
-                                <a class="dropdown-item" href="{{ route('favorites.index') }}">
+                                {{-- <a class="dropdown-item" href="{{ route('favorites.index') }}">
                                     Favoritos
-                                </a>
+                                </a> --}}
                                 @endif
                                 @if (Auth::user()->rol == 'employee')
-                                <a class="dropdown-item" href="{{ route('/') }}">
-                                    Mi Cuenta
-                                </a>
+                               
 
                                 <a class="dropdown-item" href="{{ route('orders.index') }}">
                                     Pedidos
                                 </a>
                                 @endif
                                 @if (Auth::user()->rol == 'admin')
-                                <a class="dropdown-item" href="{{ route('/') }}">
-                                    Mi Cuenta
-                                </a>
-
+                            
                                 <a class="dropdown-item" href="{{ route('users.index') }}">
                                     Usuarios
                                 </a>
@@ -283,11 +279,11 @@
     <!-- End Footer -->
 
     <!-- Start Script -->
-    <script src="assets/js/jquery-1.11.0.min.js"></script>
-    <script src="assets/js/jquery-migrate-1.2.1.min.js"></script>
-    <script src="assets/js/bootstrap.bundle.min.js"></script>
-    <script src="assets/js/templatemo.js"></script>
-    <script src="assets/js/custom.js"></script>
+    <script src="{{ asset('assets/js/jquery-1.11.0.min.js') }}"></script>
+    <script src="{{ asset('assets/js/jquery-migrate-1.2.1.min.js') }}"></script>
+    <script src="{{ asset('assets/js/bootstrap.bundle.min.js') }}"></script>
+    <script src="{{ asset('assets/js/templatemo.js') }}"></script>
+    <script src="{{ asset('assets/js/custom.js') }}"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 

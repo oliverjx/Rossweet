@@ -45,6 +45,13 @@ class ProductController extends Controller
         $product->quantity = $request->input('quantity');
         $product->category_id = $request->input('category_id');
         $product->type_id = $request->input('type_id');
+         // Guardar la imagen en la carpeta "public/img"
+         $imagePath = $request->file('img')->store('public/img');
+        
+         // Obtener solo el nombre de la imagen
+         $imageName = basename($imagePath);
+ 
+         $product->img = $imageName;
         $product->save();
 
         return redirect()->route('products.index')->with('success', 'A new product has been created');
@@ -90,21 +97,5 @@ class ProductController extends Controller
         return redirect()->route('products.index')->with('success', 'A product has been removed');
     }
 
-    public function disable(string $id)
-    {
-        $product = Product::find($id);
-        $product->disponibility = false;
-        $product->save();
-
-        return redirect()->route('products.index')->with('success', 'Product disabled successfully');
-    }
-
-    public function enable(string $id)
-    {
-        $product = Product::find($id);
-        $product->disponibility = true;
-        $product->save();
-
-        return redirect()->route('products.index')->with('success', 'Product enabled successfully');
-    }
+ 
 }

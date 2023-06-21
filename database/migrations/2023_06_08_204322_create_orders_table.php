@@ -21,6 +21,7 @@ return new class extends Migration
             $table->foreign('user_id')->references('id')->on('users');
             $table->enum('state',['en espera','cancelada','aceptada','entregada'])->nullable();
             $table->date('date_delivered');
+            $table->enum('pay_method',['cash','credit_card','credit_card']);
             $table->timestamps();
         });
     }

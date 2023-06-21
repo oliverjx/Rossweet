@@ -102,13 +102,13 @@
 
 
                         <div class="row mb-3">
-                            <label for="genero" class="col-md-4 col-form-label text-md-end">{{ __('Género') }}</label>
+                            <label for="gender" class="col-md-4 col-form-label text-md-end">{{ __('Género') }}</label>
 
                             <div class="col-md-6">
-                                <select id="gender" class="form-control @error('gender') is-invalid @enderror" name="gender" required autocomplete="genero" autofocus>
-                                    <option value="femn">Femenino</option>
-                                    <option value="masc">Masculino</option>
-                                    <option value="NoB">No binario</option>
+                                <select id="gender" class="form-control @error('gender') is-invalid @enderror" name="gender" required autocomplete="gender" autofocus>
+                                    <option value="Femn">Femenino</option>
+                                    <option value="Masc">Masculino</option>
+                                    <option value="NoB" selected>otro</option>
                                 </select>
 
                                 @error('gender')

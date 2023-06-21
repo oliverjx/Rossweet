@@ -59,44 +59,6 @@ class ClientController extends Controller
         return redirect()->route('clients.index')->with('success', 'A new client has been created');
         
     }
-    public function register(Request $request)
-    {
-        $request->validate([
-            'name' => 'required|unique:users',
-            'last_name' => 'required',
-            'email' => 'required|email',
-            'phone_number' => 'required',
-            'direction' => 'required',
-            'birthday' => 'required|date',
-            'geder' => 'required'
-        ]);
-
-        // Create a new user
-        $user = new User;
-        $user->name = $request->input('name');
-        $user->email = $request->input('email');
-        $user->password = bcrypt($request->input('password')); // Set a default password
-        $user->save();
-
-        // Create a new client and associate it with the user
-        $client = new Client;
-        $client->name = $request->input('name');
-        $client->last_name = $request->input('last_name');
-        $client->email = $request->input('email');
-        $client->phone_number = $request->input('phone_number');
-        $client->direction = $request->input('direction');
-        $client->birthday = $request->input('birthday');
-        $client->Gender = $request->input('gender');
-        $client->user_id = $user->id; // Assign the user ID to the client
-        $client->save();
-
-        
-            return redirect()->route('login');
-        
-    }
-
-
-
 
     public function edit(string $id)
     {
