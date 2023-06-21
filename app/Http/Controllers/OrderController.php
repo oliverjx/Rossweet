@@ -69,7 +69,7 @@ class OrderController extends Controller
             $order = new Order();
             $order->client_id = $client->id;
             $order->date_delivered = $request->input('date_delivered');
-            // $order->pay_method = $request->input('pay_method');
+            $order->pay_method = $request->input('pay_method');
             $order->state = null;
             // Otros campos y lógica de validación aquí
             $order->save();
@@ -97,6 +97,7 @@ class OrderController extends Controller
     {
         $order = Order::find($id);
         $order->date_delivered = $request->input('date_delivered');
+        $order->pay_method = $request->input('pay_method');
         $order->save();
 
         return redirect()->route('orders.index')->with('success', 'Order updated successfully');
